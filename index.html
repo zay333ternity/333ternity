@@ -190,10 +190,20 @@ white-space: pre-line;
 
 <!-- Products Section -->
 <section id="products" class="products" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; padding:40px;">
-  <div class="product" data-name="EYE4NEYE SHORT-SLEEVE" data-price="30.00" data-img="eye4neye.png" data-colors="White,Black">
+  <div class="product" data-name="EYE4NEYE SHORT-SLEEVE" data-price="30.00" data-img-white="eye4neye.png" data-img-black="eye4neyeblack.png" data-colors="White,Black">
+    <img src="eye4neye.png" alt="EYE4NEYE SHORT-SLEEVE" class="product-img">
+    <h3>EYE4NEYE SHORT-SLEEVE</h3>
+    <p>$25.00</p>
+    <select class="color-selector">
+      <option value="white">White</option>
+      <option value="black">Black</option>
+    </select>
+  </div>
+</section>
+
     <img src="eye4neye.png" alt="EYE4NEYE SHORT-SLEEVE" loading="lazy">
     <h3>EYE4NEYE SHORT-SLEEVE</h3>
-    <div class="price">30.00$</div>
+    <div class="price">25.00$</div>
     <button class="addToCartBtn">Add to Cart</button>
   </div>
 
@@ -418,7 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (color === 'white') {
       imgSrc = 'eye4neye.png';
     } else if (color === 'black') {
-      imgSrc = 'eye4neyeblack.jpg';
+      imgSrc = 'eye4neyeblack.png';
     }
 
     // fade out, switch, fade in
@@ -792,6 +802,7 @@ contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95
 </script>
 </body>
 </html>
+
 
 
 
