@@ -701,7 +701,40 @@ submitOrder.addEventListener('click', () => {
 });
 
 
-// ===================== CONTACT FORM =====================
+<!-- Contact Section -->
+<section id="contact">
+  <!-- your existing contact content goes here -->
+</section>
+
+<!-- Contact Form Modal -->
+<div id="contactFormModal">
+  <!-- your existing modal content goes here -->
+</div>
+
+<!-- Footer / Socials Section -->
+<footer style="background:#111; color:#fff; padding:40px 20px; text-align:center; font-family:sans-serif;">
+  <h3 style="margin-bottom:20px; font-size:20px;">SOCIALS</h3>
+  
+  <p style="margin:5px 0;">
+    Instagram: <strong>Clothes Designer / Web Designer:</strong> 
+    <a href="https://instagram.com/sol3mn_" target="_blank" style="color:#fff; text-decoration:underline;">sol3mn_</a>
+  </p>
+  <p style="margin:5px 0;">
+    Owner: 
+    <a href="https://instagram.com/karlvin_dorvil" target="_blank" style="color:#fff; text-decoration:underline;">karlvin_dorvil</a>
+  </p>
+  <p style="margin:5px 0;">
+    Co-owner: 
+    <a href="https://instagram.com/cantfindmeek" target="_blank" style="color:#fff; text-decoration:underline;">cantfindmeek</a>
+  </p>
+  
+  <p style="margin-top:30px; font-size:14px; color:#aaa;">
+    &copy; 3TERNITY® All Rights Reserved
+  </p>
+</footer>
+
+<!-- ===================== CONTACT FORM JS ===================== -->
+<script>
 const contactBtn = document.getElementById('contactBtn');
 const contactFormModal = document.getElementById('contactFormModal');
 const closeContact = document.querySelector('#contactFormModal .closeContact');
@@ -713,119 +746,85 @@ const contactMessage = document.getElementById('contactMessage');
 const smalls = contactFormModal.querySelectorAll('small');
 
 contactBtn.addEventListener('click', () => {
-const contactSection = document.getElementById('contact') || document.body;
-contactSection.scrollIntoView({ behavior: 'smooth' });
-setTimeout(() => {
-contactFormModal.style.visibility = 'visible';
-contactFormModal.style.opacity = '1';
-contactFormModal.querySelector('.contact-content').style.transform = 'scale(1)';
-}, 500);
+  const contactSection = document.getElementById('contact') || document.body;
+  contactSection.scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => {
+    contactFormModal.style.visibility = 'visible';
+    contactFormModal.style.opacity = '1';
+    contactFormModal.querySelector('.contact-content').style.transform = 'scale(1)';
+  }, 500);
 });
 
 closeContact.addEventListener('click', () => {
-contactFormModal.style.opacity = '0';
-contactFormModal.style.visibility = 'hidden';
-contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
-});
-
-submitContact.addEventListener('click', () => {
-let valid = true;
-
-[contactName, contactEmail, contactMessage].forEach((el, i) => {
-el.style.border = '1px solid #ccc';
-smalls[i].style.display = 'none';
-});
-
-if(contactName.value.trim() === '') {
-contactName.style.border = '1px solid red';
-smalls[0].style.display = 'block';
-valid = false;
-}
-
-if(contactEmail.value.trim() === '' || !contactEmail.value.includes('@')) {
-contactEmail.style.border = '1px solid red';
-smalls[1].textContent = contactEmail.value.trim() === '' ? 'This field is required' : 'Please use a valid email';
-smalls[1].style.display = 'block';
-valid = false;
-}
-
-if(contactMessage.value.trim() === '') {
-contactMessage.style.border = '1px solid red';
-smalls[2].style.display = 'block';
-valid = false;
-}
-
-if(!valid) return;
-
-if(!valid) return;
-
-// Generate time
-const now = new Date();
-const formattedTime = now.toLocaleString();
-
-// Template parameters
-const templateParams = {
-  name: contactName.value || "No Name",
-  email: contactEmail.value || "N/A",
-  time: formattedTime,
-  message: contactMessage.value || "No message"
-};
-
-// Send email via EmailJS
-emailjs.send(
-  "service_uro76k6",          // your EmailJS service ID
-  "template_bmfhuqm",      // your EmailJS template ID
-  templateParams,
-  "pnk-Nu5Uyq1hasfXP"            // replace with your public key
-)
-.then(() => {
-  alert('Message sent successfully!');
-
-  // Clear the form & hide modal
-  contactName.value = '';
-  contactEmail.value = '';
-  contactMessage.value = '';
   contactFormModal.style.opacity = '0';
   contactFormModal.style.visibility = 'hidden';
   contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
-})
-.catch((error) => {
-  console.error("EmailJS error:", error);
-  alert("Failed to send message. Check console for details.");
 });
 
+submitContact.addEventListener('click', () => {
+  let valid = true;
 
-contactName.value = '';
-contactEmail.value = '';
-contactMessage.value = '';
-contactFormModal.style.opacity = '0';
-contactFormModal.style.visibility = 'hidden';
-contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
+  [contactName, contactEmail, contactMessage].forEach((el, i) => {
+    el.style.border = '1px solid #ccc';
+    smalls[i].style.display = 'none';
+  });
+
+  if(contactName.value.trim() === '') {
+    contactName.style.border = '1px solid red';
+    smalls[0].style.display = 'block';
+    valid = false;
+  }
+
+  if(contactEmail.value.trim() === '' || !contactEmail.value.includes('@')) {
+    contactEmail.style.border = '1px solid red';
+    smalls[1].textContent = contactEmail.value.trim() === '' ? 'This field is required' : 'Please use a valid email';
+    smalls[1].style.display = 'block';
+    valid = false;
+  }
+
+  if(contactMessage.value.trim() === '') {
+    contactMessage.style.border = '1px solid red';
+    smalls[2].style.display = 'block';
+    valid = false;
+  }
+
+  if(!valid) return;
+
+  // Generate time
+  const now = new Date();
+  const formattedTime = now.toLocaleString();
+
+  // Template parameters
+  const templateParams = {
+    name: contactName.value || "No Name",
+    email: contactEmail.value || "N/A",
+    time: formattedTime,
+    message: contactMessage.value || "No message"
+  };
+
+  // Send email via EmailJS
+  emailjs.send(
+    "service_uro76k6",
+    "template_bmfhuqm",
+    templateParams,
+    "pnk-Nu5Uyq1hasfXP"
+  )
+  .then(() => {
+    alert('Message sent successfully!');
+    contactName.value = '';
+    contactEmail.value = '';
+    contactMessage.value = '';
+    contactFormModal.style.opacity = '0';
+    contactFormModal.style.visibility = 'hidden';
+    contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
+  })
+  .catch((error) => {
+    console.error("EmailJS error:", error);
+    alert("Failed to send message. Check console for details.");
+  });
 });
-
-
-  <!-- Footer / Socials Section -->
-<footer style="background:#111; color:#fff; padding:40px 20px; text-align:center; font-family:sans-serif;">
-  <h3 style="margin-bottom:20px; font-size:20px;">SOCIALS</h3>
-  
-  <p style="margin:5px 0;">
-    Instagram: <strong>Clothes Designer / Web Designer:</strong> <a href="https://instagram.com/sol3mn_" target="_blank" style="color:#fff; text-decoration:underline;">sol3mn_</a>
-  </p>
-  <p style="margin:5px 0;">
-    Owner: <a href="https://instagram.com/karlvin_dorvil" target="_blank" style="color:#fff; text-decoration:underline;">karlvin_dorvil</a>
-  </p>
-  <p style="margin:5px 0;">
-    Co-owner: <a href="https://instagram.com/cantfindmeek" target="_blank" style="color:#fff; text-decoration:underline;">cantfindmeek</a>
-  </p>
-  
-  <p style="margin-top:30px; font-size:14px; color:#aaa;">
-    &copy; 3TERNITY® All Rights Reserved
-  </p>
-</footer>
-
 </script>
-</body>
-</html>
+
 
 
 
