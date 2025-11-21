@@ -360,8 +360,6 @@ document.addEventListener('keydown', (e) => {
 <button id="submitOrder">Submit Order</button>
 </div>
 </div>
-
-<!-- Product Options Modal -->
 <!-- Product Options Modal -->
 <div id="productOptionsModal">
   <div class="options-content">
@@ -396,7 +394,7 @@ document.addEventListener('keydown', (e) => {
   }
 </style>
 
-<!-- JS for color switching and auto image on open -->
+<!-- JS for modal image color switching -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const modalImg = document.getElementById('modalImg');
@@ -413,13 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isEye4neye()) return;
 
     const color = modalColor.value.toLowerCase();
-    let imgSrc = '';
-
-    if (color === 'white') {
-      imgSrc = 'eye4neye.png';
-    } else if (color === 'black') {
-      imgSrc = 'eye4neyeblack.jpg'; // corrected filename
-    }
+    let imgSrc = color === 'black' ? 'eye4neyeblack.jpg' : 'eye4neye.png';
 
     // fade out, switch, fade in
     modalImg.style.opacity = 0;
@@ -434,17 +426,31 @@ document.addEventListener('DOMContentLoaded', () => {
     modalColor.addEventListener('change', updateModalImage);
   }
 
-  // Set correct image when modal opens
-  function initializeModal() {
-    if (isEye4neye()) {
-      updateModalImage(); // set image according to current color selection
-    }
+  // Call this whenever the modal opens
+  function initializeModal(product) {
+    // Set modal content
+    modalName.textContent = product.dataset.name;
+    document.getElementById('modalPrice').textContent = product.dataset.price;
+
+    // Default color selection
+    modalColor.value = 'white';
+
+    // Set initial image based on color
+    updateModalImage();
+
+    // Show modal
+    document.getElementById('productOptionsModal').style.display = 'block';
   }
 
-  // Call initializeModal whenever modal opens
-  // Replace this with your actual modal open logic if needed
-  // Example: if you have a function openProductModal(), call initializeModal() inside it
-  document.getElementById('productOptionsModal').addEventListener('show', initializeModal);
+  // Example: Attach modal to product click
+  // Replace this with your actual product click logic
+  document.querySelectorAll('.product').forEach(product => {
+    product.addEventListener('click', () => {
+      if (product.dataset.name === "EYE4NEYE SHORT-SLEEVE") {
+        initializeModal(product);
+      }
+    });
+  });
 });
 </script>
 
@@ -792,6 +798,7 @@ contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95
 </script>
 </body>
 </html>
+
 
 
 
