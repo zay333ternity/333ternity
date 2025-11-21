@@ -360,6 +360,7 @@ document.addEventListener('keydown', (e) => {
 <button id="submitOrder">Submit Order</button>
 </div>
 </div>
+
 <!-- Product Options Modal -->
 <!-- Product Options Modal -->
 <div id="productOptionsModal">
@@ -395,7 +396,7 @@ document.addEventListener('keydown', (e) => {
   }
 </style>
 
-<!-- JS for modal image color switching -->
+<!-- JS for color switching and auto image on open -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const modalImg = document.getElementById('modalImg');
@@ -412,8 +413,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isEye4neye()) return;
 
     const color = modalColor.value.toLowerCase();
-    let imgSrc = color === 'black' ? 'eye4neyeblack.png' : 'eye4neye.png';
+    let imgSrc = '';
 
+    if (color === 'white') {
+      imgSrc = 'eye4neye.png';
+    } else if (color === 'black') {
+      imgSrc = 'eye4neyeblack.jpg';
+    }
 
     // fade out, switch, fade in
     modalImg.style.opacity = 0;
@@ -428,36 +434,19 @@ document.addEventListener('DOMContentLoaded', () => {
     modalColor.addEventListener('change', updateModalImage);
   }
 
-  // Call this whenever the modal opens
-  function initializeModal(product) {
-    // Set modal content
-    modalName.textContent = product.dataset.name;
-    document.getElementById('modalPrice').textContent = product.dataset.price;
-
-    // Default color selection
-    modalColor.value = 'white';
-
-    // ✅ Set initial image immediately
-    modalImg.src = modalColor.value === 'black' ? 'eye4neyeblack.jpg' : 'eye4neye.png';
-
-    // Apply fade effect (optional)
-    updateModalImage();
-
-    // Show modal
-    document.getElementById('productOptionsModal').style.display = 'block';
+  // Set correct image when modal opens
+  function initializeModal() {
+    if (isEye4neye()) {
+      updateModalImage(); // set image according to current color selection
+    }
   }
 
-  // Example: Attach modal to product click
-  document.querySelectorAll('.product').forEach(product => {
-    product.addEventListener('click', () => {
-      if (product.dataset.name === "EYE4NEYE SHORT-SLEEVE") {
-        initializeModal(product);
-      }
-    });
-  });
+  // Call initializeModal whenever modal opens
+  // Replace this with your actual modal open logic if needed
+  // Example: if you have a function openProductModal(), call initializeModal() inside it
+  document.getElementById('productOptionsModal').addEventListener('show', initializeModal);
 });
 </script>
-
 
 
 <!-- SMS Modal -->
@@ -497,84 +486,82 @@ let cart = [];
 let selectedProduct = null;
 
 addToCartBtns.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    selectedProduct = e.target.closest('.product');
-    openProductModal();
-  });
+btn.addEventListener('click', (e) => {
+selectedProduct = e.target.closest('.product');
+openProductModal();
+});
 });
 
 function openProductModal(){
-  modalImg.src = selectedProduct.dataset.img;
-  modalName.textContent = selectedProduct.dataset.name;
-  modalPrice.textContent = selectedProduct.dataset.price;
-  modalColor.innerHTML = '';
-  const colors = selectedProduct.dataset.colors.split(',');
-  colors.forEach(c=>{
-    const option = document.createElement('option');
-    option.value = c;
-    option.textContent = c;
-    modalColor.appendChild(option);
-  });
-  modalSize.value = 'M';
-  productOptionsModal.classList.add('active');
+modalImg.src = selectedProduct.dataset.img;
+modalName.textContent = selectedProduct.dataset.name;
+modalPrice.textContent = selectedProduct.dataset.price;
+modalColor.innerHTML = '';
+const colors = selectedProduct.dataset.colors.split(',');
+colors.forEach(c=>{
+const option = document.createElement('option');
+option.value = c;
+option.textContent = c;
+modalColor.appendChild(option);
+});
+modalSize.value = 'M';
+productOptionsModal.classList.add('active');
 }
 
 function closeProductModal(){
-  productOptionsModal.classList.remove('active');
+productOptionsModal.classList.remove('active');
 }
 
-// ✅ FIXED: use currently displayed modal image (with color) instead of default dataset.img
 confirmAdd.addEventListener('click', ()=>{
-  const color = modalColor.value;
-  const size = modalSize.value;
-  const img = modalImg.src; // now uses selected color
-  addToCart(selectedProduct.dataset.name, selectedProduct.dataset.price, img, color, size);
-  closeProductModal();
+const color = modalColor.value;
+const size = modalSize.value;
+addToCart(selectedProduct.dataset.name, selectedProduct.dataset.price, selectedProduct.dataset.img, color, size);
+closeProductModal();
 });
 
 function addToCart(name, price, img, color, size){
-  cart.push({name, price:parseFloat(price), img, color, size});
-  updateCartDisplay();
-  cartCount.classList.add('pop');
-  setTimeout(()=>cartCount.classList.remove('pop'),300);
+cart.push({name, price:parseFloat(price), img, color, size});
+updateCartDisplay();
+cartCount.classList.add('pop');
+setTimeout(()=>cartCount.classList.remove('pop'),300);
 }
 
 function updateCartDisplay(){
-  cartItemsDiv.innerHTML = '';
-  let total=0;
-  cart.forEach((item,index)=>{
-    total += item.price;
-    const div=document.createElement('div');
-    div.className='cart-item';
-    div.innerHTML = `<img src="${item.img}" alt="${item.name}"><div class="cart-item-details"><strong>${item.name}</strong>Size: ${item.size}, Color: ${item.color}<br>$${item.price.toFixed(2)}</div><button onclick="removeCartItem(${index})">x</button>`;
-    cartItemsDiv.appendChild(div);
-  });
-  cartCount.textContent = cart.length;
-  cartTotalEl.textContent = total.toFixed(2);
+cartItemsDiv.innerHTML = '';
+let total=0;
+cart.forEach((item,index)=>{
+total += item.price;
+const div=document.createElement('div');
+div.className='cart-item';
+div.innerHTML = `<img src="${item.img}" alt="${item.name}"><div class="cart-item-details"><strong>${item.name}</strong>Size: ${item.size}, Color: ${item.color}<br>$${item.price.toFixed(2)}</div><button onclick="removeCartItem(${index})">x</button>`;
+cartItemsDiv.appendChild(div);
+});
+cartCount.textContent = cart.length;
+cartTotalEl.textContent = total.toFixed(2);
 }
 
 function removeCartItem(index){
-  cart.splice(index,1);
-  updateCartDisplay();
+cart.splice(index,1);
+updateCartDisplay();
 }
 
 function toggleCart(){ miniCart.classList.toggle('active'); }
 
 function showOrderMessage(message){
-  const msg = document.createElement('div');
-  msg.className = 'order-message';
-  msg.textContent = message;
-  cartItemsDiv.prepend(msg);
-  setTimeout(()=> msg.classList.add('show'),10);
+const msg = document.createElement('div');
+msg.className = 'order-message';
+msg.textContent = message;
+cartItemsDiv.prepend(msg);
+setTimeout(()=> msg.classList.add('show'),10);
 
-  let timeout = setTimeout(()=> hideMsg(), 5000);
-  function hideMsg(){
-    msg.classList.remove('show');
-    setTimeout(()=> msg.remove(),500);
-  }
+let timeout = setTimeout(()=> hideMsg(), 5000);
+function hideMsg(){
+msg.classList.remove('show');
+setTimeout(()=> msg.remove(),500);
+}
 
-  msg.addEventListener('mouseenter', ()=> clearTimeout(timeout));
-  msg.addEventListener('mouseleave', ()=> timeout = setTimeout(hideMsg, 5000));
+msg.addEventListener('mouseenter', ()=> clearTimeout(timeout));
+msg.addEventListener('mouseleave', ()=> timeout = setTimeout(hideMsg, 5000));
 }
 
 // ===================== SMS POPUP =====================
@@ -802,30 +789,18 @@ contactFormModal.style.opacity = '0';
 contactFormModal.style.visibility = 'hidden';
 contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
 });
-
-
-  <!-- Footer / Socials Section -->
-<footer style="background:#111; color:#fff; padding:40px 20px; text-align:center; font-family:sans-serif;">
-  <h3 style="margin-bottom:20px; font-size:20px;">SOCIALS</h3>
-  
-  <p style="margin:5px 0;">
-    Instagram: <strong>Clothes Designer / Web Designer:</strong> <a href="https://instagram.com/sol3mn_" target="_blank" style="color:#fff; text-decoration:underline;">sol3mn_</a>
-  </p>
-  <p style="margin:5px 0;">
-    Owner: <a href="https://instagram.com/karlvin_dorvil" target="_blank" style="color:#fff; text-decoration:underline;">karlvin_dorvil</a>
-  </p>
-  <p style="margin:5px 0;">
-    Co-owner: <a href="https://instagram.com/cantfindmeek" target="_blank" style="color:#fff; text-decoration:underline;">cantfindmeek</a>
-  </p>
-  
-  <p style="margin-top:30px; font-size:14px; color:#aaa;">
-    &copy; 3TERNITY® All Rights Reserved
-  </p>
-</footer>
-
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
