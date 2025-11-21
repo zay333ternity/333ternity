@@ -362,21 +362,92 @@ document.addEventListener('keydown', (e) => {
 </div>
 
 <!-- Product Options Modal -->
+<!-- Product Options Modal -->
 <div id="productOptionsModal">
-<div class="options-content">
-<span class="close" onclick="closeProductModal()">×</span>
-<img id="modalImg" src="" alt="">
-<h3 id="modalName"></h3>
-<div class="price" id="modalPrice"></div>
-<label>Color:</label>
-<select id="modalColor"></select>
-<label>Size:</label>
-<select id="modalSize">
-<option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option>
-</select>
-<button id="confirmAdd">Add to Cart</button>
+  <div class="options-content">
+    <span class="close" onclick="closeProductModal()">×</span>
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalName"></h3>
+    <div class="price" id="modalPrice"></div>
+    
+    <label>Color:</label>
+    <select id="modalColor">
+      <option value="white">White</option>
+      <option value="black">Black</option>
+    </select>
+    
+    <label>Size:</label>
+    <select id="modalSize">
+      <option>XS</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+    
+    <button id="confirmAdd">Add to Cart</button>
+  </div>
 </div>
-</div>
+
+<!-- CSS for fade effect -->
+<style>
+  #modalImg {
+    transition: opacity 0.2s ease;
+  }
+</style>
+
+<!-- JS for color switching and auto image on open -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modalImg = document.getElementById('modalImg');
+  const modalColor = document.getElementById('modalColor');
+  const modalName = document.getElementById('modalName');
+
+  // Only apply effect for EYE4NEYE product
+  function isEye4neye() {
+    return modalName && modalName.textContent.trim() === "EYE4NEYE SHORT-SLEEVE";
+  }
+
+  // Function to update image based on color
+  function updateModalImage() {
+    if (!isEye4neye()) return;
+
+    const color = modalColor.value.toLowerCase();
+    let imgSrc = '';
+
+    if (color === 'white') {
+      imgSrc = 'eye4neye.png';
+    } else if (color === 'black') {
+      imgSrc = 'eye4neyeblack.jpg';
+    }
+
+    // fade out, switch, fade in
+    modalImg.style.opacity = 0;
+    setTimeout(() => {
+      modalImg.src = imgSrc;
+      modalImg.style.opacity = 1;
+    }, 200);
+  }
+
+  // Change image when color is selected
+  if (modalColor) {
+    modalColor.addEventListener('change', updateModalImage);
+  }
+
+  // Set correct image when modal opens
+  function initializeModal() {
+    if (isEye4neye()) {
+      updateModalImage(); // set image according to current color selection
+    }
+  }
+
+  // Call initializeModal whenever modal opens
+  // Replace this with your actual modal open logic if needed
+  // Example: if you have a function openProductModal(), call initializeModal() inside it
+  document.getElementById('productOptionsModal').addEventListener('show', initializeModal);
+});
+</script>
+
 
 <!-- SMS Modal -->
 <div id="smsModal">
@@ -721,6 +792,7 @@ contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95
 </script>
 </body>
 </html>
+
 
 
 
