@@ -361,6 +361,7 @@ document.addEventListener('keydown', (e) => {
 </div>
 </div>
 <!-- Product Options Modal -->
+<!-- Product Options Modal -->
 <div id="productOptionsModal">
   <div class="options-content">
     <span class="close" onclick="closeProductModal()">×</span>
@@ -435,7 +436,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Default color selection
     modalColor.value = 'white';
 
-    // Set initial image based on color
+    // ✅ Set initial image immediately
+    modalImg.src = modalColor.value === 'black' ? 'eye4neyeblack.jpg' : 'eye4neye.png';
+
+    // Apply fade effect (optional)
     updateModalImage();
 
     // Show modal
@@ -443,7 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Example: Attach modal to product click
-  // Replace this with your actual product click logic
   document.querySelectorAll('.product').forEach(product => {
     product.addEventListener('click', () => {
       if (product.dataset.name === "EYE4NEYE SHORT-SLEEVE") {
@@ -453,6 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
 
 
 <!-- SMS Modal -->
@@ -798,6 +802,7 @@ contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95
 </script>
 </body>
 </html>
+
 
 
 
