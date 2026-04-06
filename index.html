@@ -196,22 +196,6 @@ white-space: pre-line;
     <div class="price">20.00$</div>
     <button class="addToCartBtn">Add to Cart</button>
   </div>
-<div class="product" 
-     data-name="3TERNITY Layered Flannel (Black/Grey)" 
-     data-price="65.00$" 
-     data-img="flannel.jpeg"
-     data-img2="flannel1.png"
-     data-colors="Black/Grey">
-
-  <div class="product-image">
-    <img src="flannel.jpeg" class="main-img" alt="Flannel Front" loading="lazy">
-    <img src="flannel1.png" class="hover-img" alt="Flannel Back" loading="lazy">
-  </div>
-
-  <h3>3TERNITY Layered Flannel (Black/Grey)</h3>
-  <div class="price">65.00$</div>
-  <button class="addToCartBtn">Add to Cart</button>
-</div>
   
   <div class="product" data-name="The Lords Creation Sweatpants (BLACK COLORWAY)" data-price="40.00$" data-img="eternitysweats.png" data-colors="Black">
     <img src="eternitysweats.png" alt="3TERNITY Sweats" loading="lazy">
@@ -220,12 +204,77 @@ white-space: pre-line;
     <button class="addToCartBtn">Add to Cart</button>
   </div>
 
-  <div class="product" data-name="333 Infinite Time Sweatshirt" data-price="30.00$" data-img="infinitesweatshirt.jpeg" data-colors="White">
-    <img src="infinitesweatshirt.jpeg" alt="Infinite Time Sweatshirt" loading="lazy">
-    <h3>333 "Infinite Time" Sweatshirt</h3>
-    <div class="price">$30.00</div>
-    <button class="addToCartBtn">Add to Cart</button>
+<div class="product" 
+     id="flannel-card"
+     data-name="3TERNITY Layered Flannel (Black/Grey)" 
+     data-price="65.00$" 
+     data-img="flannel.jpeg"
+     data-img2="flannel1.png"
+     data-colors="Black/Grey">
+
+  <div class="product-image flip-container">
+    <div class="flipper">
+      <img src="flannel.jpeg" class="front-img" alt="Flannel Front" loading="lazy">
+      <img src="flannel1.png" class="back-img" alt="Flannel Back" loading="lazy">
+    </div>
   </div>
+
+  <h3>3TERNITY Layered Flannel (Black/Grey)</h3>
+  <div class="price">65.00$</div>
+  <button class="addToCartBtn">Add to Cart</button>
+</div>
+
+<!-- Inline CSS -->
+<style>
+  /* Container perspective for 3D flip */
+  #flannel-card .flip-container {
+    perspective: 1000px;
+    width: 100%;
+  }
+
+  /* Flipper holds front and back images */
+  #flannel-card .flipper {
+    position: relative;
+    width: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  /* Front and back images */
+  #flannel-card .front-img, 
+  #flannel-card .back-img {
+    width: 100%;
+    backface-visibility: hidden;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Back image is flipped 180° */
+  #flannel-card .back-img {
+    transform: rotateY(180deg);
+  }
+</style>
+
+<!-- Inline JS -->
+<script>
+  const flannelCard = document.getElementById('flannel-card');
+  const addBtn = flannelCard.querySelector('.addToCartBtn');
+  const flipper = flannelCard.querySelector('.flipper');
+
+  addBtn.addEventListener('click', () => {
+    // Optional: your add-to-cart code here
+
+    // Flip the card 180° (show back)
+    flipper.style.transform = 'rotateY(180deg)';
+
+    // Flip back after 2 seconds
+    setTimeout(() => {
+      flipper.style.transform = 'rotateY(0deg)';
+    }, 2000);
+  });
+</script>
 
   <div class="product" data-name="3TERNITY Rhinestone Zip up" data-price="35.00$" data-img="eternityzipup.png" data-colors="Black">
     <img src="eternityzipup.png" alt="3TERNITY Zip Up" loading="lazy">
