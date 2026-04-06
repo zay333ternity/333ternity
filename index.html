@@ -149,6 +149,39 @@ white-space: pre-line;
 #contactFormModal small {color:red; display:none;}
 #contactFormModal button {padding:10px 20px; background:#000; color:#fff; border:none; border-radius:5px; cursor:pointer; margin-top:10px;}
 #contactFormModal span.closeContact {position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.2rem;}
+
+/* FOOTER STYLES */
+.site-footer {
+  background-color: #111; /* dark background */
+  color: #aaa;            /* subtle gray text */
+  text-align: center;
+  font-size: 0.85rem;     /* small, subtle font */
+  padding: 12px 10px;
+  position: fixed;        /* sticks to bottom */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;           /* stays on top of content */
+}
+
+.site-footer a {
+  color: #fff;            /* Instagram handle white for contrast */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;               /* space between icon and handle */
+}
+
+.site-footer a:hover {
+  color: #f77737;         /* Instagram-like hover accent */
+}
+
+.insta-logo {
+  width: 16px;            /* tiny, subtle icon */
+  height: 16px;
+  vertical-align: middle;
+  fill: #fff;             /* makes the SVG icon white */
+}
 </style>
 </head>
 <body>
@@ -819,11 +852,13 @@ contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95
 });
 </script>
   <!-- Footer goes here -->
-  <footer class="site-footer">
+ <footer class="site-footer">
     <p>
       Designed & Created by 
       <a href="https://www.instagram.com/sol3mn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+        <svg class="insta-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.8 224.1 370.8 339 319.5 339 255.9 287.7 141 224.1 141zm0 190c-41.4 0-75.1-33.7-75.1-75.1S182.7 180.8 224.1 180.8 299.2 214.5 299.2 255.9 265.5 331 224.1 331zm146.4-194.1c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27zm76.1 27.2c-.9-19.6-5-37-19.1-51.1s-31.5-18.2-51.1-19.1c-20.2-1.2-80.8-1.2-101 0-19.6.9-37 5-51.1 19.1s-18.2 31.5-19.1 51.1c-1.2 20.2-1.2 80.8 0 101 0 .1 0 .2 0 .3s0 .2 0 .3c.9 19.6 5 37 19.1 51.1s31.5 18.2 51.1 19.1c20.2 1.2 80.8 1.2 101 0 19.6-.9 37-5 51.1-19.1s18.2-31.5 19.1-51.1c1.2-20.2 1.2-80.8 0-101zM398.8 388c-7.8 19.6-23 35-42.6 42.8-29.5 11.7-99.7 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.8-23.2-42.6-42.8-11.7-29.5-9-99.7-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 23-35 42.6-42.8 29.5-11.7 99.7-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.8 23.2 42.6 42.8 11.7 29.5 9 99.7 9 132.1s2.7 102.7-9 132.1z"/>
+        </svg>
         @sol3mn
       </a> 
       — follow the journey.
