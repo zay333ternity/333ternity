@@ -204,83 +204,20 @@ white-space: pre-line;
     <button class="addToCartBtn">Add to Cart</button>
   </div>
 <div class="product" 
-     id="flannel-card"
      data-name="3TERNITY Layered Flannel (Black/Grey)" 
-     data-price="65.00$" 
+     data-price="45.00$" 
      data-img="flannel.jpeg"
      data-img2="flannel1.png"
      data-colors="Black/Grey">
 
-  <div class="product-image flip-container">
-    <div class="flipper">
-      <div class="front">
-        <img src="flannel.jpeg" alt="Flannel Front" loading="lazy">
-      </div>
-      <div class="back">
-        <img src="flannel1.png" alt="Flannel Back" loading="lazy">
-      </div>
-    </div>
+  <div class="product-image">
+    <img src="flannel1.png" class="hover-img" alt="Flannel Back" loading="lazy">
   </div>
 
   <h3>3TERNITY Layered Flannel (Black/Grey)</h3>
-  <div class="price">65.00$</div>
+  <div class="price">45.00$</div>
   <button class="addToCartBtn">Add to Cart</button>
 </div>
-
-<style>
-  /* Set perspective on container */
-  #flannel-card .flip-container {
-    perspective: 1000px;
-    width: 100%;
-    position: relative;
-  }
-
-  /* Flipper setup */
-  #flannel-card .flipper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.8s;
-  }
-
-  /* Front & back faces */
-  #flannel-card .front,
-  #flannel-card .back {
-    position: absolute;
-    width: 100%;
-    backface-visibility: hidden;
-  }
-
-  #flannel-card .back {
-    transform: rotateY(180deg);
-  }
-
-  /* Make images fill the faces */
-  #flannel-card .front img,
-  #flannel-card .back img {
-    width: 100%;
-    display: block;
-  }
-</style>
-
-<script>
-  const flannelCard = document.getElementById('flannel-card');
-  const addBtn = flannelCard.querySelector('.addToCartBtn');
-  const flipper = flannelCard.querySelector('.flipper');
-
-  addBtn.addEventListener('click', () => {
-    // Optional: add-to-cart logic here
-
-    // Flip to back
-    flipper.style.transform = 'rotateY(180deg)';
-
-    // Flip back after 2 seconds
-    setTimeout(() => {
-      flipper.style.transform = 'rotateY(0deg)';
-    }, 2000);
-  });
-</script>
 
   <div class="product" data-name="3TERNITY Rhinestone Zip up" data-price="35.00$" data-img="eternityzipup.png" data-colors="Black">
     <img src="eternityzipup.png" alt="3TERNITY Zip Up" loading="lazy">
