@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+
+
 <head>
 <meta name="google-site-verification" content="jlysghV1z8dRIZsP8Xz3Si3AVWDJECI_eiAomYE0Ua4" />
 <meta charset="UTF-8">
@@ -7,425 +9,241 @@
 <title>3TERNITY® | Official Store</title>
 <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 <style>
+:root {
+  --color-bg: #fff;
+  --color-text: #111;
+  --color-primary: #000;
+  --color-accent: #f77737;
+  --color-footer-bg: #111;
+  --color-footer-text: #aaa;
+  --transition: 0.3s ease;
+}
+
 * {margin:0; padding:0; box-sizing:border-box;}
-body {font-family:Arial, sans-serif; background:#fff; color:#111; line-height:1.4;}
+body {font-family:Arial, sans-serif; background:var(--color-bg); color:var(--color-text); line-height:1.4;}
 a {text-decoration:none; color:inherit;}
 
-/* NAV */
-nav {display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:#fff; border-bottom:1px solid #eee; position:sticky; top:0; z-index:100;}
+/* NAVBAR */
+nav {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 40px; background:var(--color-bg);
+  border-bottom:1px solid #eee; position:sticky; top:0; z-index:100;
+}
 .logo {font-family:'UnifrakturCook', cursive; font-size:2rem;}
-.nav-links {display:flex; gap:20px; font-weight:bold; position:relative;}
+.nav-links {display:flex; gap:20px; font-weight:bold;}
 
-/* Cart Icon Top Right Adjusted */
+/* CART ICON */
 .cart-icon {
-position:fixed;
-top:80px;
-right:40px;
-font-size:1.8rem;
-cursor:pointer;
-z-index:150;
-transition: transform 0.3s ease;
+  position:fixed; top:80px; right:40px;
+  font-size:1.8rem; cursor:pointer; z-index:150;
+  transition: transform var(--transition);
 }
 .cart-icon span {
-background:#000;
-color:#fff;
-border-radius:50%;
-padding:2px 6px;
-font-size:0.8rem;
-position:absolute;
-top:-10px;
-right:-10px;
-transition: transform 0.3s ease;
+  background:var(--color-primary); color:#fff;
+  border-radius:50%; padding:2px 6px; font-size:0.8rem;
+  position:absolute; top:-10px; right:-10px;
+  transition: transform var(--transition);
 }
-.pop { transform: scale(1.3); }
+.cart-icon.pop { transform: scale(1.3); }
 
 /* HERO */
-.hero {min-height:60vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#fff; background:#000; position:relative;}
+.hero {
+  min-height:60vh; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; text-align:center;
+  color:#fff; background:var(--color-primary); position:relative;
+}
 .hero h1 {font-family:'UnifrakturCook', cursive; font-size:3.5rem; margin-bottom:15px;}
 .hero p {font-size:1.2rem; margin-bottom:10px;}
-.hero button {padding:12px 25px; font-size:1rem; background:#fff; color:#000; border:none; cursor:pointer; margin-top:10px; transition: all 0.2s ease; }
+.hero button {
+  padding:12px 25px; font-size:1rem;
+  background:#fff; color:var(--color-primary);
+  border:none; cursor:pointer; margin-top:10px;
+  transition: all var(--transition);
+}
 .hero button:hover { transform: translateY(-2px); background:#e0e0e0; }
 
 /* PRODUCTS */
 main {padding:50px 40px; max-width:1200px; margin:0 auto;}
 .products {display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:25px;}
-.product {border:1px solid #eee; border-radius:8px; overflow:hidden; transition:0.3s; background:#fff;}
+.product {
+  border:1px solid #eee; border-radius:8px;
+  overflow:hidden; transition:0.3s; background:#fff;
+}
 .product:hover {transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-.product img {width:100%; height:250px; object-fit:contain; background:#fff; display:block; transition: transform 0.3s ease; }
+.product img {width:100%; height:250px; object-fit:contain; transition: transform var(--transition);}
 .product img:hover { transform: scale(1.05); }
 .product h3 {margin:10px; font-size:1.1rem;}
 .product .price {margin:0 10px 10px; font-weight:bold;}
-.product button {margin:0 10px 10px; padding:8px 15px; border:none; background:#000; color:#fff; cursor:pointer; border-radius:5px; transition: all 0.2s ease; }
+.product button {
+  margin:0 10px 10px; padding:8px 15px; border:none;
+  background:var(--color-primary); color:#fff; cursor:pointer;
+  border-radius:5px; transition: all var(--transition);
+}
 .product button:hover { transform: translateY(-2px); background:#333; }
 
-/* MINI-CART SLIDE PANEL */
+/* MINI-CART PANEL */
 #miniCart {
-position:fixed;
-top:0;
-right:-360px;
-width:360px;
-height:100%;
-background:rgba(255,255,255,0.98);
-box-shadow:-8px 0 25px rgba(0,0,0,0.3);
-padding:25px;
-overflow-y:auto;
-transition:right 0.4s ease;
-z-index:500;
-border-radius:10px 0 0 10px;
+  position:fixed; top:0; right:-360px; width:360px; height:100%;
+  background:rgba(255,255,255,0.98); box-shadow:-8px 0 25px rgba(0,0,0,0.3);
+  padding:25px; overflow-y:auto; transition:right 0.4s ease; z-index:500;
+  border-radius:10px 0 0 10px;
 }
 #miniCart.active {right:0;}
 #miniCart h3 {text-align:center; margin-bottom:20px; font-family:'UnifrakturCook', cursive; font-size:2rem;}
 #miniCart .cart-item {
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:15px;
-padding:8px;
-border-radius:8px;
-transition:background 0.2s;
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:15px; padding:8px; border-radius:8px; transition:background var(--transition);
 }
 #miniCart .cart-item:hover {background:rgba(0,0,0,0.03);}
 #miniCart .cart-item img {width:60px; height:60px; object-fit:contain; border-radius:5px;}
 #miniCart .cart-item-details {flex:1; margin-left:10px; font-size:0.9rem;}
 #miniCart .cart-item-details strong {display:block; margin-bottom:5px;}
 #miniCart .close-cart {text-align:right; cursor:pointer; font-weight:bold; margin-bottom:20px; font-size:1.1rem;}
-#miniCart button {background:#000; color:#fff; border:none; border-radius:5px; padding:3px 6px; cursor:pointer; transition: background 0.2s;}
+#miniCart button {background:var(--color-primary); color:#fff; border:none; border-radius:5px; padding:3px 6px; cursor:pointer; transition: background var(--transition);}
 #miniCart button:hover {background:#333;}
 
 /* ORDER MESSAGE INSIDE MINI-CART */
 .order-message {
-background:#000;
-color:#fff;
-padding:10px;
-margin-bottom:15px;
-border-radius:5px;
-opacity:0;
-transform:translateY(20px);
-transition:opacity 0.5s ease, transform 0.5s ease;
-cursor:pointer;
-white-space: pre-line;
+  background:var(--color-primary); color:#fff; padding:10px;
+  margin-bottom:15px; border-radius:5px; opacity:0;
+  transform:translateY(20px); transition:opacity 0.5s ease, transform 0.5s ease;
+  cursor:pointer; white-space: pre-line;
 }
 .order-message.show {opacity:1; transform:translateY(0);}
 
-/* SMS POPUP */
-#smsModal {position:fixed; inset:0; background:rgba(0,0,0,0.7); display:flex; justify-content:center; align-items:center; visibility:hidden; opacity:0; transition:0.3s; z-index:200;}
-#smsModal.active {visibility:visible; opacity:1;}
-.sms-content {background:#fff; padding:30px; border-radius:10px; text-align:center; width:90%; max-width:400px; transform: scale(0.95); transition: transform 0.3s ease, opacity 0.3s ease;}
-#smsModal.active .sms-content { transform: scale(1); }
-.sms-content input {padding:10px; width:80%; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;}
-.sms-content button {padding:10px 20px; border:none; background:#000; color:#fff; cursor:pointer; border-radius:5px;}
+/* SMS & Product Modals */
+#smsModal, #productOptionsModal {
+  position:fixed; inset:0; display:flex;
+  justify-content:center; align-items:center;
+  visibility:hidden; opacity:0; transition:0.3s; z-index:400;
+}
+#smsModal.active, #productOptionsModal.active {visibility:visible; opacity:1;}
+.sms-content, .options-content {
+  background:#fff; padding:30px; border-radius:10px;
+  width:90%; max-width:400px; text-align:center;
+  transform: scale(0.95); transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#smsModal.active .sms-content, #productOptionsModal.active .options-content { transform: scale(1); }
+.sms-content input, .options-content select, .options-content input {padding:10px; width:80%; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;}
+.sms-content button, .options-content button {padding:10px 20px; border:none; background:var(--color-primary); color:#fff; cursor:pointer; border-radius:5px;}
 
-/* PRODUCT OPTIONS MODAL */
-#productOptionsModal {position:fixed; inset:0; background:rgba(0,0,0,0.8); display:flex; justify-content:center; align-items:center; visibility:hidden; opacity:0; transition:0.3s; z-index:400;}
-#productOptionsModal.active {visibility:visible; opacity:1;}
-.options-content {background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; text-align:center; transform: scale(0.95); transition: transform 0.3s ease, opacity 0.3s ease;}
-#productOptionsModal.active .options-content { transform: scale(1); }
-.options-content img {width:150px; margin-bottom:20px; border-radius:8px;}
-.options-content h3 {margin-bottom:10px;}
-.options-content .price {margin-bottom:20px; font-weight:bold;}
-.options-content select {padding:10px; width:80%; margin-bottom:15px; border:1px solid #ccc; border-radius:5px;}
-.options-content button {padding:10px 20px; margin:5px; border:none; background:#000; color:#fff; cursor:pointer; border-radius:5px;}
-
-/* ABOUT & MISSION SECTIONS */
+/* FADE-IN SECTIONS */
 .fade-in {opacity:0; transform:translateY(20px); transition:opacity 0.8s ease-out, transform 0.8s ease-out;}
 .fade-in.visible {opacity:1; transform:translateY(0);}
-#mission {margin-top:60px; padding:50px 40px; background:#f0f0f0; border-radius:10px;}
-#mission h2 {font-family:'UnifrakturCook', cursive; font-size:2.5rem; margin-bottom:20px; text-align:center;}
-#mission p {max-width:800px; margin:0 auto 15px; font-size:1.1rem; line-height:1.6;}
-#about {margin-top:60px; padding:50px 40px; background:#f7f7f7; border-radius:10px;}
-#about h2 {font-family:'UnifrakturCook', cursive; font-size:2.5rem; margin-bottom:20px; text-align:center;}
-#about p {max-width:800px; margin:0 auto 15px; font-size:1.1rem; line-height:1.6;}
 
-/* CHECKOUT FORM */
-#checkoutBtn {width:100%; padding:10px; margin-top:15px; background:#000; color:#fff; border:none; cursor:pointer; border-radius:5px;}
-#checkoutForm {display:none; margin-top:15px;}
-#checkoutForm input {width:100%; padding:8px; margin-bottom:8px; border:1px solid #ccc; border-radius:5px;}
-#checkoutForm input.error {border:1px solid red;}
-#checkoutForm small {color:red; font-size:0.8rem; display:none; margin-bottom:5px;}
-
-/* CONTACT FORM MODAL */
-#contactFormModal {position:fixed; inset:0; display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,0.7); visibility:hidden; opacity:0; transition:0.3s; z-index:700;}
-#contactFormModal .contact-content {background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; text-align:center; transform:scale(0.95); transition: transform 0.3s ease, opacity 0.3s ease; position:relative;}
-#contactFormModal input, #contactFormModal textarea {width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc;}
-#contactFormModal small {color:red; display:none;}
-#contactFormModal button {padding:10px 20px; background:#000; color:#fff; border:none; border-radius:5px; cursor:pointer; margin-top:10px;}
-#contactFormModal span.closeContact {position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.2rem;}
-
-/* FOOTER STYLES */
+/* FOOTER */
 .site-footer {
-  background-color: #111; /* dark background */
-  color: #aaa;            /* subtle gray text */
-  text-align: center;
-  font-size: 0.85rem;     /* small, subtle font */
-  padding: 12px 10px;
-  position: fixed;        /* sticks to bottom */
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 999;           /* stays on top of content */
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  text-align: center; font-size: 0.85rem; padding: 12px 10px;
+  position: fixed; left:0; bottom:0; width:100%; z-index:999;
 }
-
-.site-footer a {
-  color: #fff;            /* Instagram handle white for contrast */
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;               /* space between icon and handle */
-}
-
-.site-footer a:hover {
-  color: #f77737;         /* Instagram-like hover accent */
-}
-
-.insta-logo {
-  width: 16px;            /* tiny, subtle icon */
-  height: 16px;
-  vertical-align: middle;
-  fill: #fff;             /* makes the SVG icon white */
-}
+.site-footer a {color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:5px;}
+.site-footer a:hover {color:var(--color-accent);}
+.insta-logo {width:16px; height:16px; vertical-align:middle; fill:#fff;}
 </style>
-</head>
-<body>
+</head><body>
 
+<!-- NAVBAR -->
 <nav>
-<div class="logo">3TERNITY</div>
-<div class="nav-links">
-<a href="#products">Shop</a>
-<a href="#about">About</a>
-<a href="#contact" id="contactBtn">Contact</a>
-</div>
+  <div class="logo">3TERNITY®</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#products">Shop</a>
+    <a href="#lookbook">Lookbook</a>
+    <a href="#contact" id="contactBtn">Contact</a>
+  </div>
 </nav>
 
-<div class="cart-icon" onclick="toggleCart()">🛒<span id="cart-count">0</span></div>
-
-<section class="hero">
-<h1>3TERNITY</h1>
-<p> Clothes beyond the hands of time — limited drops arriving soon.</p>
-<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+<!-- HERO -->
+<section class="hero fade-in">
+  <h1>3TERNITY® Streetwear</h1>
+  <p>High-quality, timeless streetwear that lasts without breaking the bank.</p>
+  <button onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
 </section>
 
-<main>
-
-<!-- Mission & Vision Section -->
-<section id="mission" class="fade-in">
-<h2>Our Mission & Vision</h2>
-<p>3TERNITY isn’t just another streetwear brand. It was created for people who are tired of brands overcharging for hype and logos while forgetting about quality and style. We wanted to make clothing that feels premium, lasts, and actually represents the person wearing it.</p>
-<p>Every drop, every design, and every stitch is intentional. We focus on materials that feel right, prints that pop, and fits that actually work for everyday life. Limited releases aren’t just marketing—they’re our way of making sure each piece has meaning, care, and attention behind it.</p>
-<p>Our vision is simple: create a community of people who value style, authenticity, and quality without getting ripped off. 3TERNITY is for the ones who want to stand out, wear something they love, and know that the story behind it matters just as much as how it looks.</p>
-<p style="text-align:center; font-weight:bold;">Learn why by scrolling below ⬇️</p>
+<!-- ABOUT / MISSION -->
+<section id="about" class="fade-in" style="padding:60px 20px; max-width:900px; margin:0 auto; text-align:center;">
+  <h2 style="font-family:'UnifrakturCook', cursive; font-size:2.5rem; margin-bottom:25px;">3TERNITY: Why We Exist</h2>
+  <p style="font-size:1.1rem; margin-bottom:15px; line-height:1.6;">
+    Streetwear shouldn’t cost a fortune just to look good. We got tired of overpriced brands jacking up prices for no reason and losing the soul of true style. That’s why 3TERNITY was created: to bring you high-quality, timeless streetwear that lasts without breaking the bank.
+  </p>
+  <p style="font-size:1.1rem; line-height:1.6;">
+    Every piece we design is made with care, premium materials, and attention to detail — because your clothes should represent you, not just a price tag. Limited drops, bold designs, and a dedication to the people — that’s what 3TERNITY stands for.
+  </p>
 </section>
 
-<!-- About Section -->
-<section id="about" class="fade-in">
-<h2>3TERNITY: Why We Exist</h2>
-<p>Streetwear shouldn’t cost a fortune just to look good. We got tired of overpriced brands jacking up prices for no reason and losing the soul of true style. That’s why 3TERNITY was created: to bring you high-quality, timeless streetwear that lasts without breaking the bank.</p>
-<p>Every piece we design is made with care, premium materials, and attention to detail — because your clothes should represent you, not just a price tag. Limited drops, bold designs, and a dedication to the people — that’s what 3TERNITY stands for.</p>
-</section>
-
-<section id="products" style="padding:40px 20px;">
-
-  <!-- Section Title -->
-  <h2 style="text-align:center; font-weight:700; font-family:'UnifrakturCook', cursive; font-size:3rem; margin-bottom:2rem; width:100%; display:block;">
-    Shop the Collection
-  </h2>
-
-  <!-- Products Grid -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; max-width:1200px; margin:0 auto;">
-
-    <!-- EYE4NEYE SHORT-SLEEVE -->
-    <div class="product" data-name="EYE4NEYE SHORT-SLEEVE" data-price="20.00$" data-img="eye4neye.png" data-colors="White,Black" style="border:1px solid #ccc; padding:10px;">
-      <img src="eye4neye.png" alt="EYE4NEYE SHORT-SLEEVE" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">EYE4NEYE SHORT-SLEEVE</h3>
-      <div style="font-weight:bold;">20.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- The Lords Creation Sweatpants -->
-    <div class="product" data-name="The Lords Creation Sweatpants (BLACK COLORWAY)" data-price="40.00$" data-img="eternitysweats.png" data-colors="Black" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternitysweats.png" alt="3TERNITY Sweats" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">"The Lords Creation" Sweatpants (BLACK COLORWAY)</h3>
-      <div style="font-weight:bold;">40.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY Layered Flannel -->
-    <div class="product" data-name="3TERNITY Layered Flannel (Black/Grey)" data-price="65.00$" data-img="flannel1.png" data-colors="Black/Grey" style="border:1px solid #ccc; padding:10px;">
-      <div class="product-image">
-        <img src="flannel1.png" class="main-img" alt="Flannel Back" loading="lazy" style="width:100%; height:auto;">
-      </div>
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY Layered Flannel (Black/Grey)</h3>
-      <div style="font-weight:bold;">65.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY Rhinestone Zip up -->
-    <div class="product" data-name="3TERNITY Rhinestone Zip up" data-price="35.00$" data-img="eternityzipup.png" data-colors="Black" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternityzipup.png" alt="3TERNITY Zip Up" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY Zip up Rhinestone Hoodie</h3>
-      <div style="font-weight:bold;">35.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY Women’s Layered Set -->
-    <div class="product" data-name="3TERNITY Women’s Layered Set (Olive)" data-price="75.00$" data-img="womenset.jpeg" data-colors="Olive" style="border:1px solid #ccc; padding:10px;">
-      <div class="product-image">
-        <img src="womenset.jpeg" class="main-img" alt="3TERNITY Women’s Olive Set" loading="lazy" style="width:100%; height:auto;">
-      </div>
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY Women’s Layered Set (Olive)</h3>
-      <div style="font-weight:bold;">75.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY STATEMENT SWEATS -->
-    <div class="product" data-name="3TERNITY STATEMENT SWEATS" data-price="35.00$" data-img="eternitytriplesweats.jpg" data-colors="Camo-Pink,Tan,Camo-Regular,ALL 3(WILL BE ALL PRICES ADDED TOGETHER)" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternitytriplesweats.jpg" alt="3TERNITY STATEMENT SWEATS" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY STATEMENT SWEATS</h3>
-      <div style="font-weight:bold;">35.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY SWEATSUITS -->
-    <div class="product" data-name="3TERNITY SWEATSUITS" data-price="60.00$" data-img="eternitysweatsuits.jpg" data-colors="Pink,Black,Both(PRICE DOUBLED)" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternitysweatsuits.jpg" alt="3TERNITY SWEATSUITS" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY SWEATSUITS</h3>
-      <div style="font-weight:bold;">60.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-  </div>
-</section>
-
-<section id="lookbook" style="padding:50px 40px; background:#f9f9f9; border-radius:10px; margin-top:50px;">
-  <h2 style="font-family:'UnifrakturCook', cursive; font-size:2.5rem; text-align:center; margin-bottom:30px;">SEEN IN 333</h2>
-  <div class="lookbook-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;">
-    <img src="eternityshirt.jpeg" alt="Look 1" class="lookbook-img" style="width:100%; cursor:pointer; border-radius:8px;">
-    <img src="diegopicture.jpg" alt="Look 2" class="lookbook-img" style="width:100%; cursor:pointer; border-radius:8px;">
-    <img src="ayirapicture.jpg" alt="Look 3" class="lookbook-img" style="width:100%; cursor:pointer; border-radius:8px;">
-    <img src="henrypicture.jpg" alt="Look 4" class="lookbook-img" style="width:100%; cursor:pointer; border-radius:8px;">
-    <img src="randompicture.jpg" alt="Look 5" class="lookbook-img" style="width:100%; cursor:pointer; border-radius:8px;">
-    <img src="afnanandmarkpicture.jpg" alt="Look 6" class="lookbook-img" style="width:100%; cursor:pointer; border-radius:8px;">
-  </div>
-</section>
-
-
-<!-- Lookbook Modal -->
-<div id="lookbookModal" style="position:fixed; inset:0; display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,0.9); visibility:hidden; opacity:0; transition:0.3s; z-index:800;">
-  <span id="closeLookbook" style="position:absolute; top:20px; right:30px; font-size:2.5rem; color:#fff; cursor:pointer;">×</span>
-  
-  <div style="position:relative; max-width:90%; max-height:90%;">
-    <img id="lightboxImg" src="" alt="" style="width:100%; height:auto; max-height:90vh; border-radius:10px;">
-    
-    <!-- Left Arrow -->
-    <span id="prevLook" style="position:absolute; top:50%; left:-50px; transform:translateY(-50%); font-size:2rem; color:#fff; cursor:pointer; user-select:none;">&#10094;</span>
-    
-    <!-- Right Arrow -->
-    <span id="nextLook" style="position:absolute; top:50%; right:-50px; transform:translateY(-50%); font-size:2rem; color:#fff; cursor:pointer; user-select:none;">&#10095;</span>
-  </div>
-</div>
-
+<!-- FADE-IN SCRIPT -->
 <script>
-// ================= LOOKBOOK LIGHTBOX =================
-const lookbookImgs = document.querySelectorAll('.lookbook-img');
-const lookbookModal = document.getElementById('lookbookModal');
-const lightboxImg = document.getElementById('lightboxImg');
-const closeLookbook = document.getElementById('closeLookbook');
-const prevLook = document.getElementById('prevLook');
-const nextLook = document.getElementById('nextLook');
-
-let currentIndex = 0;
-
-lookbookImgs.forEach((img, index) => {
-  img.addEventListener('click', () => {
-    currentIndex = index;
-    openLightbox();
+function revealOnScroll() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const windowBottom = window.innerHeight * 0.85;
+  fadeElements.forEach(el => {
+    const elTop = el.getBoundingClientRect().top;
+    if (elTop < windowBottom) el.classList.add('visible');
   });
-});
-
-function openLightbox() {
-  lightboxImg.src = lookbookImgs[currentIndex].src;
-  lookbookModal.style.visibility = 'visible';
-  lookbookModal.style.opacity = '1';
 }
-
-function closeLightbox() {
-  lookbookModal.style.opacity = '0';
-  setTimeout(() => lookbookModal.style.visibility = 'hidden', 300);
-}
-
-closeLookbook.addEventListener('click', closeLightbox);
-
-// Navigate with arrows
-prevLook.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + lookbookImgs.length) % lookbookImgs.length;
-  lightboxImg.src = lookbookImgs[currentIndex].src;
-});
-
-nextLook.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % lookbookImgs.length;
-  lightboxImg.src = lookbookImgs[currentIndex].src;
-});
-
-// Keyboard navigation (optional, but looks professional)
-document.addEventListener('keydown', (e) => {
-  if (lookbookModal.style.visibility === 'visible') {
-    if (e.key === 'ArrowLeft') prevLook.click();
-    if (e.key === 'ArrowRight') nextLook.click();
-    if (e.key === 'Escape') closeLightbox();
-  }
-});
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 </script>
 
+<!-- SMOOTH SCROLL LINKS -->
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+  <!-- PRODUCTS SECTION -->
+<section id="products" style="padding:60px 20px; max-width:1200px; margin:0 auto;">
+  <h2 style="text-align:center; font-family:'UnifrakturCook', cursive; font-size:3rem; margin-bottom:40px;">Shop the Collection</h2>
+  
+  <div class="products-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:25px;">
+    
+    <!-- PRODUCT TEMPLATE -->
+    <div class="product" data-name="EYE4NEYE SHORT-SLEEVE" data-price="20.00" data-img="eye4neye.png" data-colors="White,Black">
+      <img src="eye4neye.png" alt="EYE4NEYE SHORT-SLEEVE" loading="lazy">
+      <h3>EYE4NEYE SHORT-SLEEVE</h3>
+      <div class="price">$20.00</div>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
 
-<!-- Contact Form Modal -->
-<div id="contactFormModal">
-  <div class="contact-content">
-    <span class="closeContact">×</span>
-    <h2 style="font-family:'UnifrakturCook', cursive; margin-bottom:15px;">Contact Us</h2>
-    <form id="contactForm">
-      <input type="text" id="contactName" placeholder="Your Name" required />
-      <small>This field is required</small>
+    <div class="product" data-name="The Lords Creation Sweatpants" data-price="40.00" data-img="eternitysweats.png" data-colors="Black">
+      <img src="eternitysweats.png" alt="The Lords Creation Sweatpants" loading="lazy">
+      <h3>The Lords Creation Sweatpants (BLACK COLORWAY)</h3>
+      <div class="price">$40.00</div>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
 
-      <input type="email" id="contactEmail" placeholder="Your Email" required />
-      <small>Please use a valid email</small>
+    <div class="product" data-name="3TERNITY Layered Flannel" data-price="65.00" data-img="flannel1.png" data-colors="Black/Grey">
+      <img src="flannel1.png" alt="3TERNITY Layered Flannel" loading="lazy">
+      <h3>3TERNITY Layered Flannel (Black/Grey)</h3>
+      <div class="price">$65.00</div>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
 
-      <input type="tel" id="contactPhone" placeholder="Your Phone Number" />
-      <small>This field is optional</small>
+    <div class="product" data-name="3TERNITY Rhinestone Zip up" data-price="35.00" data-img="eternityzipup.png" data-colors="Black">
+      <img src="eternityzipup.png" alt="3TERNITY Rhinestone Zip up" loading="lazy">
+      <h3>3TERNITY Zip up Rhinestone Hoodie</h3>
+      <div class="price">$35.00</div>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
 
-      <textarea id="contactMessage" placeholder="Your Message" required></textarea>
-      <small>This field is required</small>
+    <div class="product" data-name="3TERNITY Women’s Layered Set" data-price="75.00" data-img="womenset.jpeg" data-colors="Olive">
+      <img src="womenset.jpeg" alt="3TERNITY Women’s Layered Set" loading="lazy">
+      <h3>3TERNITY Women’s Layered Set (Olive)</h3>
+      <div class="price">$75.00</div>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
 
-      <button type="submit" id="submitContact">Send</button>
-    </form>
   </div>
-</div>
+</section>
 
-
-</main>
-
-<!-- Mini-Cart -->
-<div id="miniCart">
-<div class="close-cart" onclick="toggleCart()">× Close</div>
-<h3>Cart</h3>
-<div id="cartItems"></div>
-<hr>
-<div style="text-align:right; font-weight:bold;">Total: $<span id="cartTotal">0.00</span></div>
-
-<!-- CHECKOUT BUTTON + FORM NOW INSIDE MINI-CART -->
-<button id="checkoutBtn">Checkout</button>
-<div id="checkoutForm">
-<input type="text" id="fullName" placeholder="Full Name">
-<small>This field is required</small>
-<input type="text" id="phone" placeholder="Phone Number">
-<small>This field is required</small>
-<input type="text" id="cashApp" placeholder="Cash App Username">
-<small>This field is required</small>
-<button id="submitOrder">Submit Order</button>
-</div>
-</div>
-
-<!-- Product Options Modal -->
-<!-- Product Options Modal -->
-<div id="productOptionsModal">
+<!-- PRODUCT OPTIONS MODAL -->
+<div id="productOptionsModal" class="fade-in">
   <div class="options-content">
     <span class="close" onclick="closeProductModal()">×</span>
     <img id="modalImg" src="" alt="">
@@ -433,10 +251,7 @@ document.addEventListener('keydown', (e) => {
     <div class="price" id="modalPrice"></div>
     
     <label>Color:</label>
-    <select id="modalColor">
-      <option value="white">White</option>
-      <option value="black">Black</option>
-    </select>
+    <select id="modalColor"></select>
     
     <label>Size:</label>
     <select id="modalSize">
@@ -451,90 +266,8 @@ document.addEventListener('keydown', (e) => {
   </div>
 </div>
 
-<!-- CSS for fade effect -->
-<style>
-  #modalImg {
-    transition: opacity 0.2s ease;
-  }
-</style>
-
-<!-- JS for color switching and auto image on open -->
+<!-- PRODUCT MODAL SCRIPT -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const modalImg = document.getElementById('modalImg');
-  const modalColor = document.getElementById('modalColor');
-  const modalName = document.getElementById('modalName');
-
-  // Only apply effect for EYE4NEYE product
-  function isEye4neye() {
-    return modalName && modalName.textContent.trim() === "EYE4NEYE SHORT-SLEEVE";
-  }
-
-  // Function to update image based on color
-  function updateModalImage() {
-    if (!isEye4neye()) return;
-
-    const color = modalColor.value.toLowerCase();
-    let imgSrc = '';
-
-    if (color === 'white') {
-      imgSrc = 'eye4neye.png';
-    } else if (color === 'black') {
-      imgSrc = 'eye4neyeblack.png';
-    }
-
-    // fade out, switch, fade in
-    modalImg.style.opacity = 0;
-    setTimeout(() => {
-      modalImg.src = imgSrc;
-      modalImg.style.opacity = 1;
-    }, 200);
-  }
-
-  // Change image when color is selected
-  if (modalColor) {
-    modalColor.addEventListener('change', updateModalImage);
-  }
-
-  // Set correct image when modal opens
-  function initializeModal() {
-    if (isEye4neye()) {
-      updateModalImage(); // set image according to current color selection
-    }
-  }
-
-  // Call initializeModal whenever modal opens
-  // Replace this with your actual modal open logic if needed
-  // Example: if you have a function openProductModal(), call initializeModal() inside it
-  document.getElementById('productOptionsModal').addEventListener('show', initializeModal);
-});
-</script>
-
-
-<!-- SMS Modal -->
-<div id="smsModal">
-<div class="sms-content">
-<span onclick="closeSMS()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:1.2rem;">×</span>
-<h3>Subscribe for SMS Updates</h3>
-<input type="text" id="phoneInput" placeholder="Enter phone number">
-<button onclick="closeSMS()">Submit</button>
-</div>
-</div>
-
-<!-- EMAILJS SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-(function() {
-emailjs.init("pnk-Nu5Uyq1hasfXP");
-})();
-</script>
-
-<script>
-// ===================== CART LOGIC =====================
-const cartCount = document.getElementById('cart-count');
-const cartItemsDiv = document.getElementById('cartItems');
-const cartTotalEl = document.getElementById('cartTotal');
-const miniCart = document.getElementById('miniCart');
 const addToCartBtns = document.querySelectorAll('.addToCartBtn');
 const productOptionsModal = document.getElementById('productOptionsModal');
 const modalImg = document.getElementById('modalImg');
@@ -544,353 +277,665 @@ const modalColor = document.getElementById('modalColor');
 const modalSize = document.getElementById('modalSize');
 const confirmAdd = document.getElementById('confirmAdd');
 
-let cart = [];
 let selectedProduct = null;
 
 addToCartBtns.forEach(btn => {
-btn.addEventListener('click', (e) => {
-selectedProduct = e.target.closest('.product');
-openProductModal();
-});
+  btn.addEventListener('click', (e) => {
+    selectedProduct = e.target.closest('.product');
+    openProductModal();
+  });
 });
 
 function openProductModal(){
-modalImg.src = selectedProduct.dataset.img;
-modalName.textContent = selectedProduct.dataset.name;
-modalPrice.textContent = selectedProduct.dataset.price;
-modalColor.innerHTML = '';
-const colors = selectedProduct.dataset.colors.split(',');
-colors.forEach(c=>{
-const option = document.createElement('option');
-option.value = c;
-option.textContent = c;
-modalColor.appendChild(option);
-});
-modalSize.value = 'M';
-productOptionsModal.classList.add('active');
+  modalImg.src = selectedProduct.dataset.img;
+  modalName.textContent = selectedProduct.dataset.name;
+  modalPrice.textContent = `$${parseFloat(selectedProduct.dataset.price).toFixed(2)}`;
+  
+  modalColor.innerHTML = '';
+  selectedProduct.dataset.colors.split(',').forEach(c => {
+    const option = document.createElement('option');
+    option.value = c;
+    option.textContent = c;
+    modalColor.appendChild(option);
+  });
+
+  modalSize.value = 'M';
+  productOptionsModal.classList.add('active');
 }
 
 function closeProductModal(){
-productOptionsModal.classList.remove('active');
+  productOptionsModal.classList.remove('active');
 }
+</script>
+  <!-- MINI-CART -->
+<div id="miniCart">
+  <div class="close-cart" onclick="toggleCart()">× Close</div>
+  <h3>Cart</h3>
+  <div id="cartItems"></div>
+  <hr>
+  <div style="text-align:right; font-weight:bold;">Total: $<span id="cartTotal">0.00</span></div>
 
-confirmAdd.addEventListener('click', ()=>{
-const color = modalColor.value;
-const size = modalSize.value;
-addToCart(selectedProduct.dataset.name, selectedProduct.dataset.price, selectedProduct.dataset.img, color, size);
-closeProductModal();
-});
+  <!-- CHECKOUT -->
+  <button id="checkoutBtn">Checkout</button>
+  <div id="checkoutForm" style="display:none;">
+    <input type="text" id="fullName" placeholder="Full Name">
+    <small>This field is required</small>
+
+    <input type="text" id="phone" placeholder="Phone Number">
+    <small>This field is required</small>
+
+    <input type="text" id="cashApp" placeholder="Cash App Username">
+    <small>This field is required</small>
+
+    <button id="submitOrder">Submit Order</button>
+  </div>
+</div>
+
+<!-- SMS POPUP -->
+<div id="smsModal">
+  <div class="sms-content">
+    <span onclick="closeSMS()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:1.2rem;">×</span>
+    <h3>Subscribe for SMS Updates</h3>
+    <input type="text" id="phoneInput" placeholder="Enter phone number">
+    <button onclick="closeSMS()">Submit</button>
+  </div>
+</div>
+
+<script>
+// ===================== CART LOGIC =====================
+const cartCount = document.getElementById('cart-count');
+const cartItemsDiv = document.getElementById('cartItems');
+const cartTotalEl = document.getElementById('cartTotal');
+const miniCart = document.getElementById('miniCart');
+
+let cart = [];
 
 function addToCart(name, price, img, color, size){
-cart.push({name, price:parseFloat(price), img, color, size});
-updateCartDisplay();
-cartCount.classList.add('pop');
-setTimeout(()=>cartCount.classList.remove('pop'),300);
+  cart.push({name, price:parseFloat(price), img, color, size});
+  updateCartDisplay();
+  cartCount.classList.add('pop');
+  setTimeout(()=>cartCount.classList.remove('pop'),300);
 }
 
 function updateCartDisplay(){
-cartItemsDiv.innerHTML = '';
-let total=0;
-cart.forEach((item,index)=>{
-total += item.price;
-const div=document.createElement('div');
-div.className='cart-item';
-div.innerHTML = `<img src="${item.img}" alt="${item.name}"><div class="cart-item-details"><strong>${item.name}</strong>Size: ${item.size}, Color: ${item.color}<br>$${item.price.toFixed(2)}</div><button onclick="removeCartItem(${index})">x</button>`;
-cartItemsDiv.appendChild(div);
-});
-cartCount.textContent = cart.length;
-cartTotalEl.textContent = total.toFixed(2);
+  cartItemsDiv.innerHTML = '';
+  let total = 0;
+  cart.forEach((item,index)=>{
+    total += item.price;
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.name}">
+      <div class="cart-item-details">
+        <strong>${item.name}</strong>
+        Size: ${item.size}, Color: ${item.color}<br>
+        $${item.price.toFixed(2)}
+      </div>
+      <button onclick="removeCartItem(${index})">x</button>
+    `;
+    cartItemsDiv.appendChild(div);
+  });
+  cartCount.textContent = cart.length;
+  cartTotalEl.textContent = total.toFixed(2);
 }
 
 function removeCartItem(index){
-cart.splice(index,1);
-updateCartDisplay();
+  cart.splice(index,1);
+  updateCartDisplay();
 }
 
 function toggleCart(){ miniCart.classList.toggle('active'); }
 
 function showOrderMessage(message){
-const msg = document.createElement('div');
-msg.className = 'order-message';
-msg.textContent = message;
-cartItemsDiv.prepend(msg);
-setTimeout(()=> msg.classList.add('show'),10);
+  const msg = document.createElement('div');
+  msg.className = 'order-message';
+  msg.textContent = message;
+  cartItemsDiv.prepend(msg);
+  setTimeout(()=> msg.classList.add('show'),10);
 
-let timeout = setTimeout(()=> hideMsg(), 5000);
-function hideMsg(){
-msg.classList.remove('show');
-setTimeout(()=> msg.remove(),500);
-}
-
-msg.addEventListener('mouseenter', ()=> clearTimeout(timeout));
-msg.addEventListener('mouseleave', ()=> timeout = setTimeout(hideMsg, 5000));
+  let timeout = setTimeout(()=> hideMsg(), 5000);
+  function hideMsg(){
+    msg.classList.remove('show');
+    setTimeout(()=> msg.remove(),500);
+  }
+  msg.addEventListener('mouseenter', ()=> clearTimeout(timeout));
+  msg.addEventListener('mouseleave', ()=> timeout = setTimeout(hideMsg, 5000));
 }
 
 // ===================== SMS POPUP =====================
 window.addEventListener('load', () => {
-if(!localStorage.getItem('smsShown')) {
-document.getElementById('smsModal').classList.add('active');
-localStorage.setItem('smsShown', 'true');
-}
+  if(!localStorage.getItem('smsShown')) {
+    document.getElementById('smsModal').classList.add('active');
+    localStorage.setItem('smsShown', 'true');
+  }
 });
 function closeSMS() {
-document.getElementById('smsModal').classList.remove('active');
-const phone = document.getElementById('phoneInput').value;
-if(phone) alert('Thanks! You will receive SMS updates.');
+  document.getElementById('smsModal').classList.remove('active');
+  const phone = document.getElementById('phoneInput').value;
+  if(phone) alert('Thanks! You will receive SMS updates.');
 }
 
-// ===================== SMOOTH SCROLL =====================
-document.querySelectorAll('a[href^="#"], .hero button').forEach(link => {
-link.addEventListener('click', function(e) {
-e.preventDefault();
-const target = document.querySelector(this.getAttribute('href'));
-if(target) {
-target.scrollIntoView({ behavior: 'smooth' });
-}
-});
-});
-
-// ===================== FADE-IN ON SCROLL =====================
-function revealOnScroll() {
-const fadeElements = document.querySelectorAll('.fade-in');
-const windowBottom = window.innerHeight * 0.85;
-fadeElements.forEach(el => {
-const elTop = el.getBoundingClientRect().top;
-if (elTop < windowBottom) el.classList.add('visible');
-});
-}
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-
-// ===================== CHECKOUT FORM WITH EMAILJS =====================
-
+// ===================== CHECKOUT FORM =====================
 const checkoutBtn = document.getElementById('checkoutBtn');
 const checkoutForm = document.getElementById('checkoutForm');
 const submitOrder = document.getElementById('submitOrder');
 
 checkoutBtn.addEventListener('click', ()=>{
-checkoutForm.style.display = 'block';
-checkoutBtn.style.display = 'none';
+  checkoutForm.style.display = 'block';
+  checkoutBtn.style.display = 'none';
+});
+
+submitOrder.addEventListener('click', () => {
+  const fields = [
+    document.getElementById('fullName'),
+    document.getElementById('phone'),
+    document.getElementById('cashApp')
+  ];
+
+  let valid = true;
+  fields.forEach(f=>{
+    f.classList.remove('error');
+    if(f.nextElementSibling) f.nextElementSibling.style.display='none';
+    if(f.value.trim() === ''){
+      f.classList.add('error');
+      if(f.nextElementSibling) f.nextElementSibling.style.display='block';
+      valid = false;
+    }
+  });
+  if(!valid) return;
+
+  const orderNumber = Math.floor(1000 + Math.random()*9000);
+
+  const ordersArray = cart.map(item=>({
+    name: item.name,
+    units: 1,
+    price: item.price.toFixed(2)
+  }));
+  
+  const totalCost = ordersArray.reduce((acc,item)=> acc+parseFloat(item.price)*item.units,0).toFixed(2);
+
+  const templateParams = {
+    full_name: fields[0].value,
+    phone_number: fields[1].value,
+    "cash app": fields[2].value,
+    order_id: orderNumber,
+    orders: ordersArray,
+    "cost.total": totalCost
+  };
+
+  console.log("Template Params:", templateParams);
+
+  emailjs.send("service_uro76k6","template_25ldfze",templateParams,"pnk-Nu5Uyq1hasfXP")
+  .then(()=>{
+    showOrderMessage(`ORDER ${orderNumber} SENT\nSend payment to Cash App user: stop_llurkin`);
+    toggleCart();
+    cart = [];
+    updateCartDisplay();
+    checkoutForm.style.display='none';
+    checkoutBtn.style.display='block';
+    fields.forEach(f=>f.value='');
+  })
+  .catch(error=>{
+    console.error("EmailJS error:", error);
+    alert("Order failed. Check console.");
+  });
+});
+</script>
+  <!-- LOOKBOOK LIGHTBOX -->
+<div id="lookbookModal" style="position:fixed; inset:0; display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,0.9); visibility:hidden; opacity:0; transition:0.3s; z-index:800;">
+  <span id="closeLookbook" style="position:absolute; top:20px; right:30px; font-size:2.5rem; color:#fff; cursor:pointer;">×</span>
+  <div style="position:relative; max-width:90%; max-height:90%;">
+    <img id="lightboxImg" src="" alt="" style="width:100%; height:auto; max-height:90vh; border-radius:10px;">
+    <span id="prevLook" style="position:absolute; top:50%; left:-50px; transform:translateY(-50%); font-size:2rem; color:#fff; cursor:pointer; user-select:none;">&#10094;</span>
+    <span id="nextLook" style="position:absolute; top:50%; right:-50px; transform:translateY(-50%); font-size:2rem; color:#fff; cursor:pointer; user-select:none;">&#10095;</span>
+  </div>
+</div>
+
+<!-- CONTACT FORM MODAL -->
+<div id="contactFormModal">
+  <div class="contact-content">
+    <span class="closeContact">×</span>
+    <h2 style="font-family:'UnifrakturCook', cursive; margin-bottom:15px;">Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" id="contactName" placeholder="Your Name" required />
+      <small>This field is required</small>
+      <input type="email" id="contactEmail" placeholder="Your Email" required />
+      <small>Please use a valid email</small>
+      <input type="tel" id="contactPhone" placeholder="Your Phone Number" />
+      <small>This field is optional</small>
+      <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+      <small>This field is required</small>
+      <button type="submit" id="submitContact">Send</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// ===================== LOOKBOOK LIGHTBOX =====================
+const lookbookImgs = document.querySelectorAll('.lookbook-img');
+const lookbookModal = document.getElementById('lookbookModal');
+const lightboxImg = document.getElementById('lightboxImg');
+const closeLookbook = document.getElementById('closeLookbook');
+const prevLook = document.getElementById('prevLook');
+const nextLook = document.getElementById('nextLook');
+let currentIndex = 0;
+
+lookbookImgs.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    currentIndex = index;
+    lightboxImg.src = img.src;
+    lookbookModal.style.visibility = 'visible';
+    lookbookModal.style.opacity = '1';
+  });
+});
+
+function closeLightbox() {
+  lookbookModal.style.opacity = '0';
+  setTimeout(()=> lookbookModal.style.visibility = 'hidden', 300);
+}
+
+closeLookbook.addEventListener('click', closeLightbox);
+prevLook.addEventListener('click', ()=> {
+  currentIndex = (currentIndex - 1 + lookbookImgs.length) % lookbookImgs.length;
+  lightboxImg.src = lookbookImgs[currentIndex].src;
+});
+nextLook.addEventListener('click', ()=> {
+  currentIndex = (currentIndex + 1) % lookbookImgs.length;
+  lightboxImg.src = lookbookImgs[currentIndex].src;
+});
+
+document.addEventListener('keydown', (e)=>{
+  if(lookbookModal.style.visibility==='visible'){
+    if(e.key==='ArrowLeft') prevLook.click();
+    if(e.key==='ArrowRight') nextLook.click();
+    if(e.key==='Escape') closeLightbox();
+  }
+});
+
+// ===================== SMOOTH SCROLL =====================
+document.querySelectorAll('a[href^="#"], .hero button').forEach(link => {
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// ===================== FADE-IN ON SCROLL =====================
+function revealOnScroll(){
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const windowBottom = window.innerHeight * 0.85;
+  fadeElements.forEach(el=>{
+    const elTop = el.getBoundingClientRect().top;
+    if(elTop < windowBottom) el.classList.add('visible');
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// ===================== CONTACT FORM LOGIC =====================
+const contactBtn = document.getElementById('contactBtn');
+const contactFormModal = document.getElementById('contactFormModal');
+const closeContact = document.querySelector('#contactFormModal .closeContact');
+const submitContact = document.getElementById('submitContact');
+const contactName = document.getElementById('contactName');
+const contactEmail = document.getElementById('contactEmail');
+const contactMessage = document.getElementById('contactMessage');
+const smalls = contactFormModal.querySelectorAll('small');
+
+contactBtn.addEventListener('click', ()=>{
+  contactFormModal.style.visibility='visible';
+  contactFormModal.style.opacity='1';
+  contactFormModal.querySelector('.contact-content').style.transform='scale(1)';
+});
+
+closeContact.addEventListener('click', ()=>{
+  contactFormModal.style.opacity='0';
+  contactFormModal.style.visibility='hidden';
+  contactFormModal.querySelector('.contact-content').style.transform='scale(0.95)';
+});
+
+submitContact.addEventListener('click', (e)=>{
+  e.preventDefault();
+  let valid = true;
+  [contactName, contactEmail, contactMessage].forEach((el,i)=>{
+    el.style.border='1px solid #ccc';
+    smalls[i].style.display='none';
+  });
+
+  if(contactName.value.trim()===''){ contactName.style.border='1px solid red'; smalls[0].style.display='block'; valid=false; }
+  if(contactEmail.value.trim()==='' || !contactEmail.value.includes('@')){
+    contactEmail.style.border='1px solid red';
+    smalls[1].textContent = contactEmail.value.trim()==='' ? 'This field is required':'Please use a valid email';
+    smalls[1].style.display='block'; valid=false;
+  }
+  if(contactMessage.value.trim()===''){ contactMessage.style.border='1px solid red'; smalls[2].style.display='block'; valid=false; }
+
+  if(!valid) return;
+
+  const now = new Date();
+  const templateParams = {
+    name: contactName.value,
+    email: contactEmail.value,
+    time: now.toLocaleString(),
+    message: contactMessage.value
+  };
+
+  emailjs.send("service_uro76k6","template_bmfhuqm",templateParams,"pnk-Nu5Uyq1hasfXP")
+  .then(()=>{
+    alert("Message sent successfully!");
+    contactName.value=''; contactEmail.value=''; contactMessage.value='';
+    contactFormModal.style.opacity='0';
+    contactFormModal.style.visibility='hidden';
+    contactFormModal.querySelector('.contact-content').style.transform='scale(0.95)';
+  })
+  .catch(error=>{
+    console.error("EmailJS error:", error);
+    alert("Failed to send message.");
+  });
+});
+</script>
+  <!-- PRODUCT OPTIONS MODAL -->
+<div id="productOptionsModal">
+  <div class="options-content">
+    <span class="close" onclick="closeProductModal()">×</span>
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalName"></h3>
+    <div class="price" id="modalPrice"></div>
+    
+    <label>Color:</label>
+    <select id="modalColor"></select>
+    
+    <label>Size:</label>
+    <select id="modalSize">
+      <option>XS</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+    
+    <button id="confirmAdd">Add to Cart</button>
+  </div>
+</div>
+
+<style>
+#modalImg { transition: opacity 0.2s ease; }
+</style>
+
+<script>
+// ===================== PRODUCT OPTIONS MODAL =====================
+const modalImg = document.getElementById('modalImg');
+const modalName = document.getElementById('modalName');
+const modalPrice = document.getElementById('modalPrice');
+const modalColor = document.getElementById('modalColor');
+const modalSize = document.getElementById('modalSize');
+const confirmAdd = document.getElementById('confirmAdd');
+let selectedProduct = null;
+
+function openProductModal(product) {
+  selectedProduct = product;
+  modalImg.src = product.dataset.img;
+  modalName.textContent = product.dataset.name;
+  modalPrice.textContent = product.dataset.price;
+
+  modalColor.innerHTML = '';
+  product.dataset.colors.split(',').forEach(c => {
+    const option = document.createElement('option');
+    option.value = c;
+    option.textContent = c;
+    modalColor.appendChild(option);
+  });
+
+  modalSize.value = 'M';
+  productOptionsModal.classList.add('active');
+  initializeModalImage();
+}
+
+function closeProductModal(){
+  productOptionsModal.classList.remove('active');
+}
+
+// ===================== DYNAMIC COLOR SWITCHING =====================
+function initializeModalImage() {
+  // Example for EYE4NEYE product, extendable to others
+  if(modalName.textContent.trim() === "EYE4NEYE SHORT-SLEEVE") {
+    updateModalImage();
+    modalColor.addEventListener('change', updateModalImage);
+  }
+}
+
+function updateModalImage() {
+  const color = modalColor.value.toLowerCase();
+  let imgSrc = '';
+  if(color === 'white') imgSrc = 'eye4neye.png';
+  else if(color === 'black') imgSrc = 'eye4neyeblack.png';
+
+  modalImg.style.opacity = 0;
+  setTimeout(() => { modalImg.src = imgSrc; modalImg.style.opacity = 1; }, 200);
+}
+
+// ===================== ADD TO CART =====================
+confirmAdd.addEventListener('click', () => {
+  const color = modalColor.value;
+  const size = modalSize.value;
+  addToCart(selectedProduct.dataset.name, selectedProduct.dataset.price, selectedProduct.dataset.img, color, size);
+  closeProductModal();
+});
+</script>
+  <!-- MINI-CART -->
+<div id="miniCart">
+  <div class="close-cart" onclick="toggleCart()">× Close</div>
+  <h3>Cart</h3>
+  <div id="cartItems"></div>
+  <hr>
+  <div style="text-align:right; font-weight:bold;">
+    Total: $<span id="cartTotal">0.00</span>
+  </div>
+
+  <!-- CHECKOUT BUTTON + FORM -->
+  <button id="checkoutBtn">Checkout</button>
+  <div id="checkoutForm">
+    <input type="text" id="fullName" placeholder="Full Name">
+    <small>This field is required</small>
+
+    <input type="text" id="phone" placeholder="Phone Number">
+    <small>This field is required</small>
+
+    <input type="text" id="cashApp" placeholder="Cash App Username">
+    <small>This field is required</small>
+
+    <button id="submitOrder">Submit Order</button>
+  </div>
+</div>
+
+<script>
+// ===================== CART LOGIC =====================
+const cartCount = document.getElementById('cart-count');
+const cartItemsDiv = document.getElementById('cartItems');
+const cartTotalEl = document.getElementById('cartTotal');
+const miniCart = document.getElementById('miniCart');
+let cart = [];
+
+// Toggle mini-cart
+function toggleCart(){ miniCart.classList.toggle('active'); }
+
+// Add item to cart
+function addToCart(name, price, img, color, size){
+  cart.push({name, price: parseFloat(price), img, color, size});
+  updateCartDisplay();
+  cartCount.classList.add('pop');
+  setTimeout(()=>cartCount.classList.remove('pop'), 300);
+}
+
+// Remove item from cart
+function removeCartItem(index){
+  cart.splice(index, 1);
+  updateCartDisplay();
+}
+
+// Update mini-cart display
+function updateCartDisplay(){
+  cartItemsDiv.innerHTML = '';
+  let total = 0;
+  cart.forEach((item,index)=>{
+    total += item.price;
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.name}">
+      <div class="cart-item-details">
+        <strong>${item.name}</strong><br>
+        Size: ${item.size}, Color: ${item.color}<br>
+        $${item.price.toFixed(2)}
+      </div>
+      <button onclick="removeCartItem(${index})">x</button>
+    `;
+    cartItemsDiv.appendChild(div);
+  });
+  cartCount.textContent = cart.length;
+  cartTotalEl.textContent = total.toFixed(2);
+}
+
+// Show order message
+function showOrderMessage(message){
+  const msg = document.createElement('div');
+  msg.className = 'order-message';
+  msg.textContent = message;
+  cartItemsDiv.prepend(msg);
+  setTimeout(()=> msg.classList.add('show'), 10);
+
+  let timeout = setTimeout(()=> hideMsg(), 5000);
+  function hideMsg(){
+    msg.classList.remove('show');
+    setTimeout(()=> msg.remove(), 500);
+  }
+
+  msg.addEventListener('mouseenter', ()=> clearTimeout(timeout));
+  msg.addEventListener('mouseleave', ()=> timeout = setTimeout(hideMsg, 5000));
+}
+
+// ===================== CHECKOUT =====================
+const checkoutBtn = document.getElementById('checkoutBtn');
+const checkoutForm = document.getElementById('checkoutForm');
+const submitOrder = document.getElementById('submitOrder');
+
+checkoutBtn.addEventListener('click', ()=>{
+  checkoutForm.style.display = 'block';
+  checkoutBtn.style.display = 'none';
 });
 
 submitOrder.addEventListener('click', () => {
   // Validate fields
   const fields = [
-    { el: document.getElementById('fullName') },
-    { el: document.getElementById('phone') },
-    { el: document.getElementById('cashApp') }
+    {el: document.getElementById('fullName')},
+    {el: document.getElementById('phone')},
+    {el: document.getElementById('cashApp')}
   ];
-  
   let valid = true;
+
   fields.forEach(f => {
     f.el.classList.remove('error');
     if(f.el.nextElementSibling) f.el.nextElementSibling.style.display = 'none';
   });
 
   fields.forEach(f => {
-    if(f.el.value.trim() === '') {
+    if(f.el.value.trim() === ''){
       f.el.classList.add('error');
       if(f.el.nextElementSibling) f.el.nextElementSibling.style.display = 'block';
       valid = false;
     }
   });
 
-  if (!valid) return;
+  if(!valid) return;
 
   // Generate order number
-  const orderNumber = Math.floor(1000 + Math.random() * 9000);
+  const orderNumber = Math.floor(1000 + Math.random()*9000);
 
-  // Ensure cart items have quantity and price
+  // Prepare cart items for EmailJS
   const ordersArray = cart.map(item => ({
-    name: item.name || "Unknown Product",
-    units: item.quantity && item.quantity > 0 ? item.quantity : 1,
-    price: item.price ? item.price.toFixed(2) : "0.00"
+    name: item.name,
+    units: 1,
+    price: item.price.toFixed(2)
   }));
 
-  // Calculate total cost
-  const totalCost = ordersArray
-    .reduce((acc, item) => acc + parseFloat(item.price) * item.units, 0)
-    .toFixed(2);
+  const totalCost = ordersArray.reduce((acc,item)=> acc + parseFloat(item.price)*item.units, 0).toFixed(2);
 
-  // Template params matching exactly what EmailJS expects
   const templateParams = {
-    full_name: document.getElementById('fullName').value || "No Name",
-    phone_number: document.getElementById('phone').value || "No Phone",
-    "cash app": document.getElementById('cashApp').value || "N/A",
+    full_name: document.getElementById('fullName').value,
+    phone_number: document.getElementById('phone').value,
+    "cash app": document.getElementById('cashApp').value,
     order_id: orderNumber,
     orders: ordersArray,
     "cost.total": totalCost
   };
 
-  // Debugging logs (optional)
-  console.log("Template Params:", templateParams);
+  emailjs.send("service_uro76k6","template_25ldfze",templateParams,"pnk-Nu5Uyq1hasfXP")
+    .then(()=>{
+      showOrderMessage(`ORDER ${orderNumber} SENT\nSend payment to Cash App user: stop_llurkin`);
+      toggleCart();
+      checkoutForm.querySelectorAll('input').forEach(input=>input.value='');
+      checkoutForm.style.display='none';
+      checkoutBtn.style.display='block';
+      cart = [];
+      updateCartDisplay();
+    })
+    .catch(error=>{
+      console.error("EmailJS error:", error);
+      alert("Order failed. Check console for details.");
+    });
+});
+</script>
+  <!-- SMS Modal -->
+<div id="smsModal">
+  <div class="sms-content">
+    <span onclick="closeSMS()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:1.2rem;">×</span>
+    <h3>Subscribe for SMS Updates</h3>
+    <input type="text" id="phoneInput" placeholder="Enter phone number">
+    <button onclick="closeSMS()">Submit</button>
+  </div>
+</div>
 
-  // Send email
-  emailjs.send(
-    "service_uro76k6",
-    "template_25ldfze",
-    templateParams,
-    "pnk-Nu5Uyq1hasfXP" // replace with your EmailJS public key
-  )
-  .then(() => {
-    showOrderMessage(`ORDER ${orderNumber} SENT\nSend payment to Cash App user: stop_llurkin`);
-    toggleCart();
+<script>
+// ===================== SMS POPUP =====================
+window.addEventListener('load', () => {
+  if(!localStorage.getItem('smsShown')) {
+    document.getElementById('smsModal').classList.add('active');
+    localStorage.setItem('smsShown', 'true');
+  }
+});
 
-    checkoutForm.querySelectorAll('input').forEach(input => input.value = '');
-    checkoutForm.style.display = 'none';
-    checkoutBtn.style.display = 'block';
+function closeSMS() {
+  const smsModal = document.getElementById('smsModal');
+  smsModal.classList.remove('active');
+  const phone = document.getElementById('phoneInput').value;
+  if(phone) alert('Thanks! You will receive SMS updates.');
+}
 
-    cart = [];
-    updateCartDisplay();
-  })
-  .catch((error) => {
-    console.error("EmailJS error:", error);
-    alert("Order failed to send. Check console for details.");
+// ===================== SMOOTH SCROLL =====================
+document.querySelectorAll('a[href^="#"], .hero button').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-
-// ===================== CONTACT FORM =====================
-const contactBtn = document.getElementById('contactBtn');
-const contactFormModal = document.getElementById('contactFormModal');
-const closeContact = document.querySelector('#contactFormModal .closeContact');
-const submitContact = document.getElementById('submitContact');
-
-const contactName = document.getElementById('contactName');
-const contactEmail = document.getElementById('contactEmail');
-const contactMessage = document.getElementById('contactMessage');
-const smalls = contactFormModal.querySelectorAll('small');
-
-contactBtn.addEventListener('click', () => {
-const contactSection = document.getElementById('contact') || document.body;
-contactSection.scrollIntoView({ behavior: 'smooth' });
-setTimeout(() => {
-contactFormModal.style.visibility = 'visible';
-contactFormModal.style.opacity = '1';
-contactFormModal.querySelector('.contact-content').style.transform = 'scale(1)';
-}, 500);
-});
-
-closeContact.addEventListener('click', () => {
-contactFormModal.style.opacity = '0';
-contactFormModal.style.visibility = 'hidden';
-contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
-});
-
-submitContact.addEventListener('click', () => {
-let valid = true;
-
-[contactName, contactEmail, contactMessage].forEach((el, i) => {
-el.style.border = '1px solid #ccc';
-smalls[i].style.display = 'none';
-});
-
-if(contactName.value.trim() === '') {
-contactName.style.border = '1px solid red';
-smalls[0].style.display = 'block';
-valid = false;
+// ===================== FADE-IN ON SCROLL =====================
+function revealOnScroll() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const windowBottom = window.innerHeight * 0.85;
+  fadeElements.forEach(el => {
+    const elTop = el.getBoundingClientRect().top;
+    if(elTop < windowBottom) el.classList.add('visible');
+  });
 }
-
-if(contactEmail.value.trim() === '' || !contactEmail.value.includes('@')) {
-contactEmail.style.border = '1px solid red';
-smalls[1].textContent = contactEmail.value.trim() === '' ? 'This field is required' : 'Please use a valid email';
-smalls[1].style.display = 'block';
-valid = false;
-}
-
-if(contactMessage.value.trim() === '') {
-contactMessage.style.border = '1px solid red';
-smalls[2].style.display = 'block';
-valid = false;
-}
-
-if(!valid) return;
-
-if(!valid) return;
-
-// Generate time
-const now = new Date();
-const formattedTime = now.toLocaleString();
-
-// Template parameters
-const templateParams = {
-  name: contactName.value || "No Name",
-  email: contactEmail.value || "N/A",
-  time: formattedTime,
-  message: contactMessage.value || "No message"
-};
-
-// Send email via EmailJS
-emailjs.send(
-  "service_uro76k6",          // your EmailJS service ID
-  "template_bmfhuqm",      // your EmailJS template ID
-  templateParams,
-  "pnk-Nu5Uyq1hasfXP"            // replace with your public key
-)
-.then(() => {
-  alert('Message sent successfully!');
-
-  // Clear the form & hide modal
-  contactName.value = '';
-  contactEmail.value = '';
-  contactMessage.value = '';
-  contactFormModal.style.opacity = '0';
-  contactFormModal.style.visibility = 'hidden';
-  contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
-})
-.catch((error) => {
-  console.error("EmailJS error:", error);
-  alert("Failed to send message. Check console for details.");
-});
-
-
-contactName.value = '';
-contactEmail.value = '';
-contactMessage.value = '';
-contactFormModal.style.opacity = '0';
-contactFormModal.style.visibility = 'hidden';
-contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
-});
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 </script>
-  <!-- Footer goes here -->
- <footer class="site-footer">
-    <p>
-      Designed & Created by 
-      <a href="https://www.instagram.com/sol3mn" target="_blank">
-        <svg class="insta-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.8 224.1 370.8 339 319.5 339 255.9 287.7 141 224.1 141zm0 190c-41.4 0-75.1-33.7-75.1-75.1S182.7 180.8 224.1 180.8 299.2 214.5 299.2 255.9 265.5 331 224.1 331zm146.4-194.1c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27zm76.1 27.2c-.9-19.6-5-37-19.1-51.1s-31.5-18.2-51.1-19.1c-20.2-1.2-80.8-1.2-101 0-19.6.9-37 5-51.1 19.1s-18.2 31.5-19.1 51.1c-1.2 20.2-1.2 80.8 0 101 0 .1 0 .2 0 .3s0 .2 0 .3c.9 19.6 5 37 19.1 51.1s31.5 18.2 51.1 19.1c20.2 1.2 80.8 1.2 101 0 19.6-.9 37-5 51.1-19.1s18.2-31.5 19.1-51.1c1.2-20.2 1.2-80.8 0-101zM398.8 388c-7.8 19.6-23 35-42.6 42.8-29.5 11.7-99.7 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.8-23.2-42.6-42.8-11.7-29.5-9-99.7-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 23-35 42.6-42.8 29.5-11.7 99.7-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.8 23.2 42.6 42.8 11.7 29.5 9 99.7 9 132.1s2.7 102.7-9 132.1z"/>
-        </svg>
-        @sol3mn
-      </a> 
-      — follow the journey.
-    </p>
-  </footer>
-</body>
+
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
