@@ -232,66 +232,82 @@ white-space: pre-line;
   <!-- Products Grid -->
   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; max-width:1200px; margin:0 auto;">
 
-    <!-- EYE4NEYE SHORT-SLEEVE -->
-    <div class="product" data-name="EYE4NEYE SHORT-SLEEVE" data-price="20.00$" data-img="eye4neye.png" data-colors="White,Black" style="border:1px solid #ccc; padding:10px;">
-      <img src="eye4neye.png" alt="EYE4NEYE SHORT-SLEEVE" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">EYE4NEYE SHORT-SLEEVE</h3>
-      <div style="font-weight:bold;">20.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
+    <!-- MAIN PRODUCTS GRID -->
+<section id="products-grid">
+  <!-- EYE4NEYE SHORT-SLEEVE -->
+  <div class="product-card" onclick="openDetail('eye4neye')">
+    <img src="eye4neye.png" alt="EYE4NEYE SHORT-SLEEVE">
+    <h3>EYE4NEYE SHORT-SLEEVE</h3>
+    <div class="price">20.00$</div>
+    <button class="addToCartBtn">Add to Cart</button>
+  </div>
 
-    <!-- The Lords Creation Sweatpants -->
-    <div class="product" data-name="The Lords Creation Sweatpants (BLACK COLORWAY)" data-price="40.00$" data-img="eternitysweats.png" data-colors="Black" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternitysweats.png" alt="3TERNITY Sweats" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">"The Lords Creation" Sweatpants (BLACK COLORWAY)</h3>
-      <div style="font-weight:bold;">40.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
+  <!-- The Lords Creation Sweatpants -->
+  <div class="product-card" onclick="openDetail('lords')">
+    <img src="eternitysweats.png" alt="The Lords Creation Sweatpants">
+    <h3>The Lords Creation Sweatpants (BLACK COLORWAY)</h3>
+    <div class="price">40.00$</div>
+    <button class="addToCartBtn">Add to Cart</button>
+  </div>
 
-    <!-- 3TERNITY Layered Flannel -->
-    <div class="product" data-name="3TERNITY Layered Flannel (Black/Grey)" data-price="65.00$" data-img="flannel1.png" data-colors="Black/Grey" style="border:1px solid #ccc; padding:10px;">
-      <div class="product-image">
-        <img src="flannel1.png" class="main-img" alt="Flannel Back" loading="lazy" style="width:100%; height:auto;">
+  <!-- 3TERNITY Layered Flannel -->
+  <div class="product-card" onclick="openDetail('flannel')">
+    <img src="flannel1.png" alt="3TERNITY Layered Flannel">
+    <h3>3TERNITY Layered Flannel (Black/Grey)</h3>
+    <div class="price">65.00$</div>
+    <button class="addToCartBtn">Add to Cart</button>
+  </div>
+
+  <!-- 3TERNITY Rhinestone Zip up -->
+  <div class="product-card" onclick="openDetail('zipup')">
+    <img src="eternityzipup.png" alt="3TERNITY Zip Up Rhinestone Hoodie">
+    <h3>3TERNITY Zip up Rhinestone Hoodie</h3>
+    <div class="price">35.00$</div>
+    <button class="addToCartBtn">Add to Cart</button>
+  </div>
+
+  <!-- 3TERNITY Women’s Layered Set -->
+  <div class="product-card" onclick="openDetail('womenset')">
+    <img src="womenset.jpeg" alt="3TERNITY Women’s Olive Set">
+    <h3>3TERNITY Women’s Layered Set (Olive)</h3>
+    <div class="price">75.00$</div>
+    <button class="addToCartBtn">Add to Cart</button>
+  </div>
+
+  <!-- 3TERNITY STATEMENT SWEATS -->
+  <div class="product-card" onclick="openDetail('statement')">
+    <img src="eternitytriplesweats.jpg" alt="3TERNITY STATEMENT SWEATS">
+    <h3>3TERNITY STATEMENT SWEATS</h3>
+    <div class="price">35.00$</div>
+    <button class="addToCartBtn">Add to Cart</button>
+  </div>
+
+  <!-- 3TERNITY SWEATSUITS -->
+  <div class="product-card" onclick="openDetail('sweatsuits')">
+    <img src="eternitysweatsuits.jpg" alt="3TERNITY SWEATSUITS">
+    <h3>3TERNITY SWEATSUITS</h3>
+    <div class="price">60.00$</div>
+    <button class="addToCartBtn">Add to Cart</button>
+  </div>
+</section>
+
+<!-- PRODUCT DETAIL SECTION -->
+<section id="product-detail" style="display:none;">
+  <div class="back-btn" onclick="closeDetail()">← Back</div>
+  <div class="detail-container">
+    <div class="left">
+      <img id="detail-main-img" src="" alt="Product Image">
+    </div>
+    <div class="right">
+      <h2 id="detail-name">Product Name</h2>
+      <p id="detail-price">Price: </p>
+      <p id="detail-colors">Colors: </p>
+      <p id="detail-description">Description: </p>
+      <div class="sizes">
+        <button>S</button><button>M</button><button>L</button>
       </div>
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY Layered Flannel (Black/Grey)</h3>
-      <div style="font-weight:bold;">65.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
+      <button class="add-to-cart addToCartBtn">Add to Cart</button>
     </div>
-
-    <!-- 3TERNITY Rhinestone Zip up -->
-    <div class="product" data-name="3TERNITY Rhinestone Zip up" data-price="35.00$" data-img="eternityzipup.png" data-colors="Black" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternityzipup.png" alt="3TERNITY Zip Up" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY Zip up Rhinestone Hoodie</h3>
-      <div style="font-weight:bold;">35.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY Women’s Layered Set -->
-    <div class="product" data-name="3TERNITY Women’s Layered Set (Olive)" data-price="75.00$" data-img="womenset.jpeg" data-colors="Olive" style="border:1px solid #ccc; padding:10px;">
-      <div class="product-image">
-        <img src="womenset.jpeg" class="main-img" alt="3TERNITY Women’s Olive Set" loading="lazy" style="width:100%; height:auto;">
-      </div>
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY Women’s Layered Set (Olive)</h3>
-      <div style="font-weight:bold;">75.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY STATEMENT SWEATS -->
-    <div class="product" data-name="3TERNITY STATEMENT SWEATS" data-price="35.00$" data-img="eternitytriplesweats.jpg" data-colors="Camo-Pink,Tan,Camo-Regular,ALL 3(WILL BE ALL PRICES ADDED TOGETHER)" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternitytriplesweats.jpg" alt="3TERNITY STATEMENT SWEATS" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY STATEMENT SWEATS</h3>
-      <div style="font-weight:bold;">35.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
-    <!-- 3TERNITY SWEATSUITS -->
-    <div class="product" data-name="3TERNITY SWEATSUITS" data-price="60.00$" data-img="eternitysweatsuits.jpg" data-colors="Pink,Black,Both(PRICE DOUBLED)" style="border:1px solid #ccc; padding:10px;">
-      <img src="eternitysweatsuits.jpg" alt="3TERNITY SWEATSUITS" loading="lazy" style="width:100%; height:auto;">
-      <h3 style="font-family:Arial, sans-serif; margin:10px 0;">3TERNITY SWEATSUITS</h3>
-      <div style="font-weight:bold;">60.00$</div>
-      <button class="addToCartBtn" style="margin-top:10px; padding:8px 12px;">Add to Cart</button>
-    </div>
-
   </div>
 </section>
 
@@ -852,19 +868,50 @@ contactFormModal.style.visibility = 'hidden';
 contactFormModal.querySelector('.contact-content').style.transform = 'scale(0.95)';
 });
 </script>
-  <!-- Footer goes here -->
- <footer class="site-footer">
-    <p>
-      Designed & Created by 
-      <a href="https://www.instagram.com/sol3mn" target="_blank">
-        <svg class="insta-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.8 224.1 370.8 339 319.5 339 255.9 287.7 141 224.1 141zm0 190c-41.4 0-75.1-33.7-75.1-75.1S182.7 180.8 224.1 180.8 299.2 214.5 299.2 255.9 265.5 331 224.1 331zm146.4-194.1c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27zm76.1 27.2c-.9-19.6-5-37-19.1-51.1s-31.5-18.2-51.1-19.1c-20.2-1.2-80.8-1.2-101 0-19.6.9-37 5-51.1 19.1s-18.2 31.5-19.1 51.1c-1.2 20.2-1.2 80.8 0 101 0 .1 0 .2 0 .3s0 .2 0 .3c.9 19.6 5 37 19.1 51.1s31.5 18.2 51.1 19.1c20.2 1.2 80.8 1.2 101 0 19.6-.9 37-5 51.1-19.1s18.2-31.5 19.1-51.1c1.2-20.2 1.2-80.8 0-101zM398.8 388c-7.8 19.6-23 35-42.6 42.8-29.5 11.7-99.7 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.8-23.2-42.6-42.8-11.7-29.5-9-99.7-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 23-35 42.6-42.8 29.5-11.7 99.7-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.8 23.2 42.6 42.8 11.7 29.5 9 99.7 9 132.1s2.7 102.7-9 132.1z"/>
-        </svg>
-        @sol3mn
-      </a> 
-      — follow the journey.
-    </p>
-  </footer>
+<!-- Footer goes here -->
+<footer class="site-footer">
+  <p>
+    Designed & Created by 
+    <a href="https://www.instagram.com/sol3mn" target="_blank">
+      <svg class="insta-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.8 224.1 370.8 339 319.5 339 255.9 287.7 141 224.1 141zm0 190c-41.4 0-75.1-33.7-75.1-75.1S182.7 180.8 224.1 180.8 299.2 214.5 299.2 255.9 265.5 331 224.1 331zm146.4-194.1c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27zm76.1 27.2c-.9-19.6-5-37-19.1-51.1s-31.5-18.2-51.1-19.1c-20.2-1.2-80.8-1.2-101 0-19.6.9-37 5-51.1 19.1s-18.2 31.5-19.1 51.1c-1.2 20.2-1.2 80.8 0 101 0 .1 0 .2 0 .3s0 .2 0 .3c.9 19.6 5 37 19.1 51.1s31.5 18.2 51.1 19.1c20.2 1.2 80.8 1.2 101 0 19.6-.9 37-5 51.1-19.1s18.2-31.5 19.1-51.1c1.2-20.2 1.2-80.8 0-101zM398.8 388c-7.8 19.6-23 35-42.6 42.8-29.5 11.7-99.7 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.8-23.2-42.6-42.8-11.7-29.5-9-99.7-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 23-35 42.6-42.8 29.5-11.7 99.7-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.8 23.2 42.6 42.8 11.7 29.5 9 99.7 9 132.1s2.7 102.7-9 132.1z"/>
+      </svg>
+      @sol3mn
+    </a> 
+    — follow the journey.
+  </p>
+</footer>
+
+<!-- --- JS for product detail view --- -->
+<script>
+const products = {
+  eye4neye: { name:"EYE4NEYE SHORT-SLEEVE", price:"20.00$", colors:"White, Black", description:"Classic short-sleeve with premium print.", img:"eye4neye.png" },
+  lords: { name:"The Lords Creation Sweatpants (BLACK COLORWAY)", price:"40.00$", colors:"Black", description:"Premium streetwear sweatpants with comfortable fit.", img:"eternitysweats.png" },
+  flannel: { name:"3TERNITY Layered Flannel (Black/Grey)", price:"65.00$", colors:"Black/Grey", description:"Layered flannel with soft fabric and modern streetwear fit.", img:"flannel1.png" },
+  zipup: { name:"3TERNITY Zip up Rhinestone Hoodie", price:"35.00$", colors:"Black", description:"Stylish rhinestone zip up hoodie.", img:"eternityzipup.png" },
+  womenset: { name:"3TERNITY Women’s Layered Set (Olive)", price:"75.00$", colors:"Olive", description:"Premium women’s layered set.", img:"womenset.jpeg" },
+  statement: { name:"3TERNITY STATEMENT SWEATS", price:"35.00$", colors:"Camo-Pink, Tan, Camo-Regular", description:"Statement sweats with bold designs.", img:"eternitytriplesweats.jpg" },
+  sweatsuits: { name:"3TERNITY SWEATSUITS", price:"60.00$", colors:"Pink, Black", description:"Complete sweat suit combos.", img:"eternitysweatsuits.jpg" }
+};
+
+function openDetail(id) {
+  const product = products[id];
+  document.getElementById('products-grid').style.display = 'none';
+  document.getElementById('product-detail').style.display = 'block';
+
+  document.getElementById('detail-main-img').src = product.img;
+  document.getElementById('detail-name').textContent = product.name;
+  document.getElementById('detail-price').textContent = "Price: " + product.price;
+  document.getElementById('detail-colors').textContent = "Colors: " + product.colors;
+  document.getElementById('detail-description').textContent = product.description;
+}
+
+function closeDetail() {
+  document.getElementById('product-detail').style.display = 'none';
+  document.getElementById('products-grid').style.display = 'flex';
+}
+</script>
+
 </body>
 </html>
 
